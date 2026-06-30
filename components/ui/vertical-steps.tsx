@@ -2,7 +2,7 @@
 
 // Vendored from packages/ui/src/components/VerticalSteps/VerticalSteps.tsx. Styling verbatim; Remix/workspace deps stripped for v0.
 
-import { CircleCheckBig } from "lucide-react";
+import { IconCircleCheck as CircleCheckBig } from "@tabler/icons-react";
 
 interface Props {
   steps: Array<{

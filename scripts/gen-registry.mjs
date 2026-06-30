@@ -19,6 +19,8 @@ const DESCRIPTIONS = {
   input: "Text input.",
   badge: "Tag, Tags, and Chip status labels.",
   avatar: "Initials / image avatar.",
+  "avatar-stack": "Overlapping avatar stack with +N overflow badge.",
+  indicator: "Status circle (red/blue/green ring) + StatusIndicator for to-do rows.",
   dialog: "Modal dialog (Radix).",
   "dropdown-menu": "Dropdown menu (Radix).",
   tabs: "Tabbed navigation (Radix).",

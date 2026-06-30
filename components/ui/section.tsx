@@ -4,7 +4,7 @@
 
 import Button from "@/components/ui/button";
 import { cn } from "@/lib/utils";
-import { ChevronRight } from "lucide-react";
+import { IconChevronRight as ChevronRight } from "@tabler/icons-react";
 import { useState, type ComponentProps, type ReactNode } from "react";
 
 // NOTE: react-animate-height dropped — collapse rendered as conditional + max-height transition.

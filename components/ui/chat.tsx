@@ -11,7 +11,7 @@ import { VStack } from "@/components/ui/stack";
 import { Label } from "@/components/ui/typography";
 import { cn } from "@/lib/utils";
 import { AnimatePresence, motion } from "framer-motion";
-import { Circle } from "lucide-react";
+import { IconCircle as Circle } from "@tabler/icons-react";
 import {
   forwardRef,
   useEffect,

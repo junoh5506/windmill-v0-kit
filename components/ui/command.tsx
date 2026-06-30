@@ -14,7 +14,7 @@ import {
   Command as CommandPrimitive,
   CommandSeparator as CommandSeparatorPrimitive,
 } from "cmdk";
-import { Loader2, Search } from "lucide-react";
+import { IconLoader2 as Loader2, IconSearch as Search } from "@tabler/icons-react";
 import {
   forwardRef,
   type ComponentProps,

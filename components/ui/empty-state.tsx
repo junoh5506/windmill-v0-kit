@@ -6,7 +6,7 @@ import { Button } from "@/components/ui/button";
 import Spinner from "@/components/ui/spinner";
 import { HStack, VStack } from "@/components/ui/stack";
 import { cn } from "@/lib/utils";
-import { ExternalLink, XCircle } from "lucide-react";
+import { IconExternalLink as ExternalLink, IconCircleX as XCircle } from "@tabler/icons-react";
 import type { ComponentProps, ReactNode } from "react";
 
 // NOTE: GradientBackground inlined (gradientBanner token classes preserved verbatim).
@@ -59,7 +59,7 @@ const EmptyState = ({
   intent = "empty",
   footer,
 }: EmptyStateProps) => {
-  // NOTE: react-icons VscError mapped to lucide-react XCircle.
+  // NOTE: react-icons VscError mapped to @tabler/icons-react XCircle.
   if (!icon && intent === "error") {
     icon = (
       <div className="text-red">

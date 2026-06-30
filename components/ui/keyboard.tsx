@@ -1,36 +1,35 @@
 "use client";
 
-// Vendored from packages/ui/src/components/Keyboard/Keyboard.tsx. Styling verbatim; Remix/workspace deps stripped for v0. react-icons swapped for lucide-react equivalents.
+// Vendored from packages/ui/src/components/Keyboard/Keyboard.tsx. Styling verbatim; Remix/workspace deps stripped for v0. react-icons swapped for @tabler/icons-react equivalents (production's icon set).
 
 import { cn } from "@/lib/utils";
 import {
-  ArrowBigUp,
-  ArrowDownSquare,
-  ArrowLeftSquare,
-  ArrowRightSquare,
-  ArrowUpSquare,
-  CornerDownLeft,
-  Command,
-  Delete,
-  Option,
-  TabletSmartphone,
-} from "lucide-react";
+  IconArrowBigUp,
+  IconSquareArrowDown,
+  IconSquareArrowLeft,
+  IconSquareArrowRight,
+  IconSquareArrowUp,
+  IconCornerDownLeft,
+  IconCommand,
+  IconBackspace,
+  IconDevices,
+} from "@tabler/icons-react";
 import type { ReactNode } from "react";
 
-// NOTE: original mapped react-icons/bs + react-icons/md; substituted nearest lucide-react icons.
+// NOTE: keyboard glyphs use Tabler icons; the ⌥ (Option/Alt) key has no Tabler glyph, so it renders as the literal symbol.
 const keyMap: Record<string, ReactNode> = {
-  command: <Command />,
-  meta: <Command />,
-  return: <CornerDownLeft />,
-  enter: <CornerDownLeft />,
-  shift: <ArrowBigUp />,
-  alt: <Option />,
-  arrowup: <ArrowUpSquare />,
-  arrowdown: <ArrowDownSquare />,
-  arrowleft: <ArrowLeftSquare />,
-  arrowright: <ArrowRightSquare />,
-  backspace: <Delete />,
-  tab: <TabletSmartphone />,
+  command: <IconCommand />,
+  meta: <IconCommand />,
+  return: <IconCornerDownLeft />,
+  enter: <IconCornerDownLeft />,
+  shift: <IconArrowBigUp />,
+  alt: <span aria-hidden>⌥</span>,
+  arrowup: <IconSquareArrowUp />,
+  arrowdown: <IconSquareArrowDown />,
+  arrowleft: <IconSquareArrowLeft />,
+  arrowright: <IconSquareArrowRight />,
+  backspace: <IconBackspace />,
+  tab: <IconDevices />,
   escape: "ESC",
 };
 

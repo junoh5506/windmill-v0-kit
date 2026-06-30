@@ -6,7 +6,7 @@ import { Button } from "@/components/ui/button";
 import { VStack } from "@/components/ui/stack";
 import { cn } from "@/lib/utils";
 import { cva, type VariantProps } from "class-variance-authority";
-import { ArrowRightIcon, CircleXIcon, InfoIcon, XIcon } from "lucide-react";
+import { IconArrowRight as ArrowRightIcon, IconCircleX as CircleXIcon, IconInfoCircle as InfoIcon, IconX as XIcon } from "@tabler/icons-react";
 import type { ComponentProps, ReactNode } from "react";
 
 // NOTE: Typography Label/Paragraph inlined (token classes preserved verbatim).

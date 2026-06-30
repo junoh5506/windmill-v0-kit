@@ -3,7 +3,7 @@
 
 import { cn } from "@/lib/utils";
 import { Dialog, Transition } from "@headlessui/react";
-import { Search } from "lucide-react";
+import { IconSearch as Search } from "@tabler/icons-react";
 import { Fragment, useEffect, useRef, useState, type ReactNode } from "react";
 
 export interface CommandOption<S extends string> {

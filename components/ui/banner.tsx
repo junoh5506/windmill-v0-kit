@@ -5,7 +5,7 @@
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import { cva, type VariantProps } from "class-variance-authority";
-import { CheckIcon, CircleXIcon, InfoIcon, TriangleAlertIcon } from "lucide-react";
+import { IconCheck as CheckIcon, IconCircleX as CircleXIcon, IconInfoCircle as InfoIcon, IconAlertTriangle as TriangleAlertIcon } from "@tabler/icons-react";
 import type { ComponentProps, ReactNode } from "react";
 
 // NOTE: Typography Paragraph inlined (token classes preserved verbatim).

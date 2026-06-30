@@ -4,7 +4,7 @@
 
 import { cn } from "@/lib/utils";
 import { Root, Thumb } from "@radix-ui/react-switch";
-import { CheckIcon, XIcon } from "lucide-react";
+import { IconCheck as CheckIcon, IconX as XIcon } from "@tabler/icons-react";
 import type { ReactNode } from "react";
 
 export interface ToggleMode<T> {

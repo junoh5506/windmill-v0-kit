@@ -4,7 +4,7 @@
   "title": "Checklist",
   "description": "Checklist with completion state.",
   "dependencies": [
-    "lucide-react"
+    "@tabler/icons-react"
   ],
   "registryDependencies": [
     "typography",
@@ -14,7 +14,7 @@
   "files": [
     {
       "path": "components/ui/checklist.tsx",
-      "content": "\"use client\";\n\n// Vendored from packages/ui/src/components/Checklist. Styling verbatim; @wind/Remix deps stripped for v0.\n// NOTE: react-icons FaCheck mapped to lucide-react Check. Header/Label imported from the kit typography primitive.\n\nimport { Header, Label } from \"@/components/ui/typography\";\nimport { cn } from \"@/lib/utils\";\nimport { Check } from \"lucide-react\";\n\ninterface OnboardingItem {\n  title: string;\n  description: string;\n}\n\ninterface Props {\n  className?: string;\n  items: OnboardingItem[];\n}\n\nconst Item = ({ title, description }: OnboardingItem) => {\n  return (\n    <div className=\"flex gap-2\">\n      <div className=\"flex h-10 w-10 items-center justify-center rounded-full bg-accent text-accent-inverse\">\n        <Check className=\"h-4 w-4\" />\n      </div>\n      <div>\n        <Header level={3}>{title}</Header>\n        <Label intent=\"secondary\">{description}</Label>\n      </div>\n    </div>\n  );\n};\n\nconst Checklist = ({ className, items }: Props) => {\n  return (\n    <div className={cn(\"flex flex-col gap-4\", className)}>\n      {items.map((item) => (\n        <Item {...item} key={item.title} />\n      ))}\n    </div>\n  );\n};\n\nexport default Checklist;\n",
+      "content": "\"use client\";\n\n// Vendored from packages/ui/src/components/Checklist. Styling verbatim; @wind/Remix deps stripped for v0.\n// NOTE: react-icons FaCheck mapped to @tabler/icons-react Check. Header/Label imported from the kit typography primitive.\n\nimport { Header, Label } from \"@/components/ui/typography\";\nimport { cn } from \"@/lib/utils\";\nimport { IconCheck as Check } from \"@tabler/icons-react\";\n\ninterface OnboardingItem {\n  title: string;\n  description: string;\n}\n\ninterface Props {\n  className?: string;\n  items: OnboardingItem[];\n}\n\nconst Item = ({ title, description }: OnboardingItem) => {\n  return (\n    <div className=\"flex gap-2\">\n      <div className=\"flex h-10 w-10 items-center justify-center rounded-full bg-accent text-accent-inverse\">\n        <Check className=\"h-4 w-4\" />\n      </div>\n      <div>\n        <Header level={3}>{title}</Header>\n        <Label intent=\"secondary\">{description}</Label>\n      </div>\n    </div>\n  );\n};\n\nconst Checklist = ({ className, items }: Props) => {\n  return (\n    <div className={cn(\"flex flex-col gap-4\", className)}>\n      {items.map((item) => (\n        <Item {...item} key={item.title} />\n      ))}\n    </div>\n  );\n};\n\nexport default Checklist;\n",
       "type": "registry:ui"
     }
   ],

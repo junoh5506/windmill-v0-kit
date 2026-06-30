@@ -1,12 +1,12 @@
 "use client";
 
 // Vendored from packages/ui/src/components/DataViewer. Styling verbatim; @wind/Remix deps stripped for v0.
-// NOTE: react-icons (Fa*) mapped to lucide-react; the app `toast` is replaced with a local no-op stub;
+// NOTE: react-icons (Fa*) mapped to @tabler/icons-react; the app `toast` is replaced with a local no-op stub;
 // FormattedTimestampTableCell (Remix/@wind) is stubbed to a locale date string.
 
 import { Tooltip } from "@/components/ui/tooltip";
 import { cn } from "@/lib/utils";
-import { Copy, CheckCircle2 } from "lucide-react";
+import { IconCopy as Copy, IconCircleCheck as CheckCircle2 } from "@tabler/icons-react";
 import { isValidElement, useState, type ReactNode } from "react";
 import { JSONTree } from "react-json-tree";
 

@@ -9,7 +9,7 @@ import Sheet from "@/components/ui/sheet";
 import { cn } from "@/lib/utils";
 import * as TooltipPrimitive from "@radix-ui/react-tooltip";
 import { cva, type VariantProps } from "class-variance-authority";
-import { PanelLeft } from "lucide-react";
+import { IconLayoutSidebar as PanelLeft } from "@tabler/icons-react";
 import {
   Children,
   cloneElement,

@@ -12,7 +12,7 @@ import { HStack } from "@/components/ui/stack";
 import { Tooltip, type TooltipProps } from "@/components/ui/tooltip";
 import { Label } from "@/components/ui/typography";
 import { cn } from "@/lib/utils";
-import { Info } from "lucide-react";
+import { IconInfoCircle as Info } from "@tabler/icons-react";
 import { Children, useEffect, useState, type ComponentProps, type ReactNode } from "react";
 
 // NOTE: react-loading-skeleton stand-in.

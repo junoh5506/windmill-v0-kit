@@ -1,11 +1,11 @@
 "use client";
 
 // Vendored from packages/ui/src/components/Checklist. Styling verbatim; @wind/Remix deps stripped for v0.
-// NOTE: react-icons FaCheck mapped to lucide-react Check. Header/Label imported from the kit typography primitive.
+// NOTE: react-icons FaCheck mapped to @tabler/icons-react Check. Header/Label imported from the kit typography primitive.
 
 import { Header, Label } from "@/components/ui/typography";
 import { cn } from "@/lib/utils";
-import { Check } from "lucide-react";
+import { IconCheck as Check } from "@tabler/icons-react";
 
 interface OnboardingItem {
   title: string;

@@ -14,7 +14,7 @@ import {
   Trigger,
 } from "@radix-ui/react-dialog";
 import { cva, type VariantProps } from "class-variance-authority";
-import { X } from "lucide-react";
+import { IconX as X } from "@tabler/icons-react";
 import {
   forwardRef,
   useState,

@@ -4,7 +4,7 @@
 
 import { cn } from "@/lib/utils";
 import { cva, type VariantProps } from "class-variance-authority";
-import { ChevronRight } from "lucide-react";
+import { IconChevronRight as ChevronRight } from "@tabler/icons-react";
 import { useEffect, useLayoutEffect, useRef, useState, type FC, type ReactNode } from "react";
 
 const maxWidthStyles = cva("w-full", {

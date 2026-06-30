@@ -3,7 +3,7 @@
 // Vendored from packages/ui/src/components/CopyToClipboard/CopyToClipboard.tsx. Styling verbatim; Remix/workspace deps stripped for v0.
 
 import { cn } from "@/lib/utils";
-import { Check, Copy } from "lucide-react";
+import { IconCheck as Check, IconCopy as Copy } from "@tabler/icons-react";
 import { useState } from "react";
 
 interface Props {

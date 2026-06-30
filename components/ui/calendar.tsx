@@ -10,7 +10,7 @@ import {
 } from "@/components/ui/dropdown-menu";
 import { cn } from "@/lib/utils";
 import { cva } from "class-variance-authority";
-import { Check, ChevronDown, ChevronLeft, ChevronRight } from "lucide-react";
+import { IconCheck as Check, IconChevronDown as ChevronDown, IconChevronLeft as ChevronLeft, IconChevronRight as ChevronRight } from "@tabler/icons-react";
 import { DateTime } from "luxon";
 import {
   Children,

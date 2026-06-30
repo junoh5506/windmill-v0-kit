@@ -6,8 +6,8 @@ import { Label } from "@/components/ui/typography";
 import { cn } from "@/lib/utils";
 import { Dialog, DialogPanel, Transition, TransitionChild } from "@headlessui/react";
 // NOTE: react-icons (BsArrowUpRight/FaBars/VscClose) is not in the kit — swapped
-// for lucide-react equivalents with the same sizing classes.
-import { ArrowUpRight, Menu, X } from "lucide-react";
+// for @tabler/icons-react equivalents with the same sizing classes.
+import { IconArrowUpRight as ArrowUpRight, IconMenu2 as Menu, IconX as X } from "@tabler/icons-react";
 import { Fragment, useState, type ReactNode } from "react";
 
 export interface LeftNavSection {

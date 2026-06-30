@@ -5,7 +5,7 @@
 import { VStack } from "@/components/ui/stack";
 import { Label } from "@/components/ui/typography";
 import { cn } from "@/lib/utils";
-import { CircleX } from "lucide-react";
+import { IconCircleX as CircleX } from "@tabler/icons-react";
 import { DateTime } from "luxon";
 import {
   forwardRef,

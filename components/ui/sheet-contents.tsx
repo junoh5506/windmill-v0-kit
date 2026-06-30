@@ -9,8 +9,8 @@ import { Label } from "@/components/ui/typography";
 import { cn } from "@/lib/utils";
 import { cva, type VariantProps } from "class-variance-authority";
 // NOTE: react-icons (FaCheck/FaExclamationTriangle/FaInfoCircle/FaTimes) is not
-// in the kit — swapped for lucide-react equivalents.
-import { Check, Info, TriangleAlert, X, XIcon, type LucideIcon } from "lucide-react";
+// in the kit — swapped for @tabler/icons-react equivalents.
+import { IconCheck as Check, IconInfoCircle as Info, IconAlertTriangle as TriangleAlert, IconX as X, IconX as XIcon, type Icon as LucideIcon } from "@tabler/icons-react";
 import { type ComponentPropsWithoutRef, type ReactNode } from "react";
 
 /* ── SheetContents ─────────────────────────────────────────────── */

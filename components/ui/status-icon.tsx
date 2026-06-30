@@ -3,7 +3,7 @@
 // Vendored from packages/ui/src/components/StatusIcon/StatusIcon.tsx. Styling verbatim; Remix/workspace deps stripped for v0.
 
 import { cn } from "@/lib/utils";
-import { CheckCircle, Loader, PauseCircle, XCircle } from "lucide-react";
+import { IconCircleCheck as CheckCircle, IconLoader as Loader, IconPlayerPause as PauseCircle, IconCircleX as XCircle } from "@tabler/icons-react";
 
 interface Props {
   className?: string;
@@ -56,7 +56,7 @@ const options = {
   warning: WARNING_STRINGS,
 };
 
-// NOTE: react-icons mapped to lucide-react: FaRegCheckCircle->CheckCircle,
+// NOTE: react-icons mapped to @tabler/icons-react: FaRegCheckCircle->CheckCircle,
 // FaRegTimesCircle->XCircle, VscLoading->Loader, BsPauseCircle->PauseCircle.
 // The warning glyph (FaExclamation in a ring) is recreated inline.
 export const StatusIcon = ({ status, size = "md" }: Props) => {

@@ -13,7 +13,7 @@ import FlexibleSpacer from "@/components/ui/flexible-spacer";
 import ScrollArea from "@/components/ui/scroll-area";
 import { cn } from "@/lib/utils";
 import { cva, type VariantProps } from "class-variance-authority";
-import { Info, MoreHorizontal } from "lucide-react";
+import { IconInfoCircle as Info, IconDots as MoreHorizontal } from "@tabler/icons-react";
 import { useEffect, useRef, useState, type ComponentProps, type ReactNode } from "react";
 
 type Variants = "default" | "simple";

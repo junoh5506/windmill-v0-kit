@@ -8,7 +8,7 @@ import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover
 import { HStack, VStack } from "@/components/ui/stack";
 import { cn } from "@/lib/utils";
 import { CalendarIcon } from "@radix-ui/react-icons";
-import { CheckIcon, ChevronDown } from "lucide-react";
+import { IconCheck as CheckIcon, IconChevronDown as ChevronDown } from "@tabler/icons-react";
 import { DateTime } from "luxon";
 import { useMemo, useState } from "react";
 

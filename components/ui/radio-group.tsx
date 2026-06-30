@@ -4,7 +4,7 @@
 
 import { cn } from "@/lib/utils";
 import { Description, RadioGroup as HeadlessRadioGroup } from "@headlessui/react";
-import { Check, Circle } from "lucide-react";
+import { IconCheck as Check, IconCircle as Circle } from "@tabler/icons-react";
 import type { ReactNode } from "react";
 
 // NOTE: react-icons BsCheck/BsCircle mapped to lucide Check/Circle.

@@ -5,7 +5,7 @@
 import { Link } from "@/components/ui/link";
 import { Label } from "@/components/ui/typography";
 import { cn } from "@/lib/utils";
-import { ChevronRight } from "lucide-react";
+import { IconChevronRight as ChevronRight } from "@tabler/icons-react";
 
 export interface BreadcrumbItem {
   to?: string;

@@ -23,6 +23,8 @@ deps stripped — so v0 prototypes look like production. The source repo is at
 
 Live: `https://windmill-v0-kit.vercel.app` (Vercel project `windmill-v0-kit`,
 account `jun-6827`). Base token install is `/r/windmill-tokens.json`.
+GitHub (public): `https://github.com/junoh5506/windmill-v0-kit` (remote `origin`,
+branch `main`) — this is the primary input for v0's Design Systems 2.0 import.
 
 ## Pipeline (mental model)
 ```
@@ -37,7 +39,7 @@ When adding/updating a component, read its real source at
 `go-windmill/packages/ui/src/components/<Dir>/` and produce a self-contained file:
 - Start with `"use client";` then a comment: `// Vendored from packages/ui/src/components/<Path>. Styling verbatim; <deps> stripped for v0.`
 - **Copy CVA variant objects and Tailwind className strings VERBATIM** — fidelity is the whole point. Do not simplify styling.
-- Import `cn` from `@/lib/utils`; `cva`/`VariantProps` from `class-variance-authority`; icons from `lucide-react` (map any `react-icons` to nearest lucide). Keep `@radix-ui/*`, `cmdk`, `recharts`, `@tiptap/*`, `@dnd-kit/*`, `framer-motion` where the source uses them.
+- Import `cn` from `@/lib/utils`; `cva`/`VariantProps` from `class-variance-authority`; icons from `@tabler/icons-react` — production's icon set (`Icon<Name>` PascalCase; map any `react-icons`/`~icons/tabler/*` to the matching `Icon<Name>`). Brand/product logos (Slack, Google…) are full-color, not Tabler — keep them as `<img>`/SVG/brand-icon set. Keep `@radix-ui/*`, `cmdk`, `recharts`, `@tiptap/*`, `@dnd-kit/*`, `framer-motion` where the source uses them.
 - Import already-vendored siblings from `@/components/ui/<name>` — do not recreate them.
 - **Strip** `@wind/*`, Remix (`@remix-run/*`, `Link`, loaders, `useNavigation`), and app/global state → replace with typed props. Keep `framer-motion` for the motion helpers (animation is their purpose).
 - Preserve `forwardRef`, `displayName`, prop names, and default exports. No `any`, no `as Type` casts (`as const` is fine).
@@ -86,9 +88,27 @@ curl -sI https://windmill-v0-kit.vercel.app/r/button.json | grep -i access-contr
 - **Never hand-edit** `registry.json` or `public/r/*.json` — regenerate.
 - **Fidelity ledger** lives in `README.md`; update it when a vendored component is simplified/stubbed (e.g. tiptap-editor, sidebar, hero-numbers).
 
-## Consume the registry (for reference / sharing)
+## How this gets consumed — two distinct paths (don't conflate them)
+The registry is NOT how v0 ingests a design system anymore. There are two audiences:
+
+**1. v0 cloud chat → Design Systems 2.0 (primary).** v0's import modal does **not**
+accept registry `/r/*.json` URLs — that's the *legacy* path per v0's own docs. DS 2.0
+wants live source: a **GitHub repo** (ideally one that's both the DS source AND a real
+consumer app) or a **ZIP/.tgz** upload, plus Storybook/docs links and notes. This repo
+is shaped exactly for it — feed it `https://github.com/junoh5506/windmill-v0-kit`. v0
+discovers the primitives, builds a starter app from `app/page.tsx` (so keep that demo a
+faithful consumer screen, not just a smoke test), you review, and it saves a reusable
+**"skill"** you attach from the prompt toolbar. `V0_PROJECT_INSTRUCTIONS.md` goes into
+the import's **Additional Notes** (or Project Settings → Instructions).
+
+**2. shadcn CLI / AI IDEs (Cursor, Windsurf) → the registry.** This is what `public/r/*.json`
+is actually for — installing real components with dep resolution into a real codebase:
 ```bash
 npx shadcn@latest add https://windmill-v0-kit.vercel.app/r/windmill-tokens.json   # base: tokens + config
 npx shadcn@latest add https://windmill-v0-kit.vercel.app/r/<name>.json            # any component; deps auto-resolve
 ```
-Pair with `V0_PROJECT_INSTRUCTIONS.md` (paste into v0 Project Settings) for full fidelity.
+v0's cloud chat does NOT auto-install registry items with their deps; that's CLI-only.
+Per-component "Open in v0" buttons exist but only seed a single component into a chat.
+
+After changes, push to GitHub (`git push`) for path 1 AND redeploy to Vercel for path 2 —
+they're served from different places.

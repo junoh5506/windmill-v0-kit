@@ -1,0 +1,19 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "avatar-stack",
+  "title": "Avatar Stack",
+  "description": "Overlapping avatar stack with +N overflow badge.",
+  "registryDependencies": [
+    "avatar",
+    "utils",
+    "windmill-tokens"
+  ],
+  "files": [
+    {
+      "path": "components/ui/avatar-stack.tsx",
+      "content": "\"use client\";\n\n// Vendored from apps/windmill-web/app/components/EmployeeAvatarStack.tsx.\n// Styling verbatim: overlapping avatars via `-space-x-1` + descending z-index, and a\n// `circle-8` \"+N\" overflow badge. The production `Icon icon={{ employee }}` avatar is\n// swapped for the kit's image-first Avatar primitive (pass imageUrl for a photo).\n\nimport Avatar, { type AvatarProps } from \"@/components/ui/avatar\";\nimport { cn } from \"@/lib/utils\";\n\nexport interface AvatarStackItem {\n  imageUrl?: string | null;\n  letter?: string;\n  accent?: boolean;\n}\n\ninterface AvatarStackProps {\n  avatars: AvatarStackItem[];\n  maxAvatars?: number;\n  size?: AvatarProps[\"size\"];\n  className?: string;\n  overflowClassName?: string;\n}\n\nconst DEFAULT_MAX_AVATARS = 3;\n\nconst AvatarStack = ({\n  avatars,\n  maxAvatars = DEFAULT_MAX_AVATARS,\n  size = \"sm\",\n  className,\n  overflowClassName,\n}: AvatarStackProps) => {\n  const avatarsToShow = avatars.slice(0, maxAvatars);\n  const hiddenCount = avatars.length - maxAvatars;\n\n  return (\n    <div className={cn(\"flex items-center -space-x-1\", className)}>\n      {avatarsToShow.map((item, index) => (\n        <div key={index} style={{ zIndex: avatarsToShow.length - index }}>\n          <Avatar imageUrl={item.imageUrl} letter={item.letter} accent={item.accent} size={size} />\n        </div>\n      ))}\n      {hiddenCount > 0 && (\n        <div\n          className={cn(\n            \"circle-8 z-0 flex items-center justify-center border bg-surface text-xs font-medium text-secondary\",\n            overflowClassName\n          )}\n        >\n          +{hiddenCount}\n        </div>\n      )}\n    </div>\n  );\n};\n\nexport default AvatarStack;\n",
+      "type": "registry:ui"
+    }
+  ],
+  "type": "registry:ui"
+}

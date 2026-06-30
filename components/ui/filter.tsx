@@ -3,7 +3,7 @@
 // Vendored from packages/ui/src/components/Filter/FilterSearchBar.tsx. Styling verbatim; @wind/Remix/app-state deps stubbed for v0.
 
 import { cn } from "@/lib/utils";
-import { SearchIcon, XIcon } from "lucide-react";
+import { IconSearch as SearchIcon, IconX as XIcon } from "@tabler/icons-react";
 import { useCallback, useEffect, useRef, useState } from "react";
 
 const DEFAULT_DEBOUNCE_TIME = 200;

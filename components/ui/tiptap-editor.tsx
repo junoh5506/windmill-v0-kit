@@ -23,20 +23,7 @@ import { Placeholder, Selection } from "@tiptap/extensions";
 import type { Node as ProseMirrorNode } from "@tiptap/pm/model";
 import { EditorContent, EditorContext, useEditor, type Editor } from "@tiptap/react";
 import { StarterKit } from "@tiptap/starter-kit";
-import {
-  Bold,
-  Code,
-  Heading1,
-  Heading2,
-  Italic,
-  List,
-  ListOrdered,
-  Quote,
-  Redo2,
-  Strikethrough,
-  Underline as UnderlineIcon,
-  Undo2,
-} from "lucide-react";
+import { IconBold as Bold, IconCode as Code, IconH1 as Heading1, IconH2 as Heading2, IconItalic as Italic, IconList as List, IconListNumbers as ListOrdered, IconQuote as Quote, IconArrowForwardUp as Redo2, IconStrikethrough as Strikethrough, IconUnderline as UnderlineIcon, IconArrowBackUp as Undo2 } from "@tabler/icons-react";
 import * as React from "react";
 
 // NOTE: replaces @wind ArrayUtil.clean — strips nullish entries from the extension list.

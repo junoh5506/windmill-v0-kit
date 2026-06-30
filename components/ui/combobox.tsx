@@ -15,7 +15,7 @@ import { HStack } from "@/components/ui/stack";
 import { cn } from "@/lib/utils";
 import { CheckIcon, MagnifyingGlassIcon } from "@radix-ui/react-icons";
 import { CommandInput as CommandInputPrimitive } from "cmdk";
-import { ChevronDownIcon } from "lucide-react";
+import { IconChevronDown as ChevronDownIcon } from "@tabler/icons-react";
 import MiniSearch from "minisearch";
 import {
   forwardRef,

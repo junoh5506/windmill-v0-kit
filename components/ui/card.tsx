@@ -4,7 +4,7 @@
 // NOTE: CardHeader's `isLoading` spinner (framer-motion) and `viewDetailLink` (Remix Link) are dropped. `button` accepts a ReactNode instead of ButtonProps. Title/Label render as a plain styled element.
 
 import { cn } from "@/lib/utils";
-import { ArrowRight } from "lucide-react";
+import { IconArrowRight as ArrowRight } from "@tabler/icons-react";
 import type { ReactNode } from "react";
 
 interface Props {

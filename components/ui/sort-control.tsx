@@ -6,7 +6,7 @@
 import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
 import { cn } from "@/lib/utils";
 import { CheckIcon } from "@radix-ui/react-icons";
-import { ArrowDownWideNarrow, ArrowUpNarrowWide } from "lucide-react";
+import { IconSortDescending as ArrowDownWideNarrow, IconSortAscending as ArrowUpNarrowWide } from "@tabler/icons-react";
 import { useMemo, useState } from "react";
 
 // NOTE: inlined stand-in for @wind/common-interfaces SortDirection.

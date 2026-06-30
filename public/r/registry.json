@@ -52,8 +52,8 @@
       ],
       "description": "Announcement card.",
       "dependencies": [
-        "class-variance-authority",
-        "lucide-react"
+        "@tabler/icons-react",
+        "class-variance-authority"
       ],
       "registryDependencies": [
         "button",
@@ -74,6 +74,23 @@
       ],
       "description": "Animated height auto-transition.",
       "registryDependencies": [
+        "windmill-tokens"
+      ]
+    },
+    {
+      "name": "avatar-stack",
+      "type": "registry:ui",
+      "title": "Avatar Stack",
+      "files": [
+        {
+          "path": "components/ui/avatar-stack.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "description": "Overlapping avatar stack with +N overflow badge.",
+      "registryDependencies": [
+        "avatar",
+        "utils",
         "windmill-tokens"
       ]
     },
@@ -105,8 +122,8 @@
       ],
       "description": "Tag, Tags, and Chip status labels.",
       "dependencies": [
-        "class-variance-authority",
-        "lucide-react"
+        "@tabler/icons-react",
+        "class-variance-authority"
       ],
       "registryDependencies": [
         "utils",
@@ -125,8 +142,8 @@
       ],
       "description": "Full-width banner.",
       "dependencies": [
-        "class-variance-authority",
-        "lucide-react"
+        "@tabler/icons-react",
+        "class-variance-authority"
       ],
       "registryDependencies": [
         "button",
@@ -146,7 +163,7 @@
       ],
       "description": "Breadcrumb trail.",
       "dependencies": [
-        "lucide-react"
+        "@tabler/icons-react"
       ],
       "registryDependencies": [
         "link",
@@ -167,8 +184,8 @@
       ],
       "description": "Primary action button (intent + size variants).",
       "dependencies": [
-        "class-variance-authority",
-        "lucide-react"
+        "@tabler/icons-react",
+        "class-variance-authority"
       ],
       "registryDependencies": [
         "utils",
@@ -187,8 +204,8 @@
       ],
       "description": "Date calendar (react-day-picker).",
       "dependencies": [
+        "@tabler/icons-react",
         "class-variance-authority",
-        "lucide-react",
         "luxon",
         "react-day-picker"
       ],
@@ -210,8 +227,8 @@
       ],
       "description": "Inline callout / alert.",
       "dependencies": [
-        "class-variance-authority",
-        "lucide-react"
+        "@tabler/icons-react",
+        "class-variance-authority"
       ],
       "registryDependencies": [
         "button",
@@ -231,7 +248,7 @@
       ],
       "description": "Surface container with Header / Body / Footer.",
       "dependencies": [
-        "lucide-react"
+        "@tabler/icons-react"
       ],
       "registryDependencies": [
         "utils",
@@ -250,7 +267,7 @@
       ],
       "description": "Bar / line / gauge charts (recharts) + chart color tokens.",
       "dependencies": [
-        "lucide-react",
+        "@tabler/icons-react",
         "luxon",
         "recharts"
       ],
@@ -273,8 +290,8 @@
       ],
       "description": "Chat message list + streaming markdown.",
       "dependencies": [
+        "@tabler/icons-react",
         "framer-motion",
-        "lucide-react",
         "rehype-raw",
         "remark-breaks",
         "remark-gfm",
@@ -352,7 +369,7 @@
       ],
       "description": "Checklist with completion state.",
       "dependencies": [
-        "lucide-react"
+        "@tabler/icons-react"
       ],
       "registryDependencies": [
         "typography",
@@ -394,8 +411,8 @@
       "description": "Searchable select.",
       "dependencies": [
         "@radix-ui/react-icons",
+        "@tabler/icons-react",
         "cmdk",
-        "lucide-react",
         "minisearch"
       ],
       "registryDependencies": [
@@ -419,7 +436,7 @@
       "description": "Headless command palette (⌘K).",
       "dependencies": [
         "@headlessui/react",
-        "lucide-react"
+        "@tabler/icons-react"
       ],
       "registryDependencies": [
         "utils",
@@ -439,8 +456,8 @@
       "description": "Command palette (cmdk).",
       "dependencies": [
         "@radix-ui/react-dialog",
-        "cmdk",
-        "lucide-react"
+        "@tabler/icons-react",
+        "cmdk"
       ],
       "registryDependencies": [
         "dialog",
@@ -476,7 +493,7 @@
       ],
       "description": "Composed bar + line + area chart.",
       "dependencies": [
-        "lucide-react",
+        "@tabler/icons-react",
         "recharts"
       ],
       "registryDependencies": [
@@ -499,8 +516,8 @@
       ],
       "description": "Max-width + expandable containers.",
       "dependencies": [
-        "class-variance-authority",
-        "lucide-react"
+        "@tabler/icons-react",
+        "class-variance-authority"
       ],
       "registryDependencies": [
         "utils",
@@ -519,7 +536,7 @@
       ],
       "description": "Copy-to-clipboard button.",
       "dependencies": [
-        "lucide-react"
+        "@tabler/icons-react"
       ],
       "registryDependencies": [
         "utils",
@@ -538,7 +555,7 @@
       ],
       "description": "JSON / text data viewer.",
       "dependencies": [
-        "lucide-react",
+        "@tabler/icons-react",
         "react-json-tree"
       ],
       "registryDependencies": [
@@ -582,7 +599,7 @@
       "description": "Date range picker with quick ranges.",
       "dependencies": [
         "@radix-ui/react-icons",
-        "lucide-react",
+        "@tabler/icons-react",
         "luxon"
       ],
       "registryDependencies": [
@@ -663,7 +680,7 @@
       "description": "Dropdown menu (Radix).",
       "dependencies": [
         "@radix-ui/react-dropdown-menu",
-        "lucide-react"
+        "@tabler/icons-react"
       ],
       "registryDependencies": [
         "utils",
@@ -682,7 +699,7 @@
       ],
       "description": "Empty / zero-data state.",
       "dependencies": [
-        "lucide-react"
+        "@tabler/icons-react"
       ],
       "registryDependencies": [
         "button",
@@ -722,7 +739,7 @@
       ],
       "description": "Debounced filter search bar.",
       "dependencies": [
-        "lucide-react"
+        "@tabler/icons-react"
       ],
       "registryDependencies": [
         "utils",
@@ -792,8 +809,8 @@
       ],
       "description": "Gradient help banner.",
       "dependencies": [
-        "class-variance-authority",
-        "lucide-react"
+        "@tabler/icons-react",
+        "class-variance-authority"
       ],
       "registryDependencies": [
         "button",
@@ -813,7 +830,7 @@
       ],
       "description": "Large hero stat numbers.",
       "dependencies": [
-        "lucide-react"
+        "@tabler/icons-react"
       ],
       "registryDependencies": [
         "stack",
@@ -838,6 +855,26 @@
         "@radix-ui/react-hover-card"
       ],
       "registryDependencies": [
+        "utils",
+        "windmill-tokens"
+      ]
+    },
+    {
+      "name": "indicator",
+      "type": "registry:ui",
+      "title": "Indicator",
+      "files": [
+        {
+          "path": "components/ui/indicator.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "description": "Status circle (red/blue/green ring) + StatusIndicator for to-do rows.",
+      "dependencies": [
+        "@tabler/icons-react"
+      ],
+      "registryDependencies": [
+        "tooltip",
         "utils",
         "windmill-tokens"
       ]
@@ -887,7 +924,7 @@
       ],
       "description": "Keyboard shortcut hint.",
       "dependencies": [
-        "lucide-react"
+        "@tabler/icons-react"
       ],
       "registryDependencies": [
         "utils",
@@ -907,7 +944,7 @@
       "description": "Left navigation with sections + links.",
       "dependencies": [
         "@headlessui/react",
-        "lucide-react"
+        "@tabler/icons-react"
       ],
       "registryDependencies": [
         "typography",
@@ -1073,7 +1110,7 @@
       "description": "Radio button group.",
       "dependencies": [
         "@headlessui/react",
-        "lucide-react"
+        "@tabler/icons-react"
       ],
       "registryDependencies": [
         "utils",
@@ -1147,7 +1184,7 @@
       ],
       "description": "Collapsible titled section.",
       "dependencies": [
-        "lucide-react"
+        "@tabler/icons-react"
       ],
       "registryDependencies": [
         "button",
@@ -1208,8 +1245,8 @@
       ],
       "description": "Sheet content scaffolding (header, sections, tabs).",
       "dependencies": [
-        "class-variance-authority",
-        "lucide-react"
+        "@tabler/icons-react",
+        "class-variance-authority"
       ],
       "registryDependencies": [
         "flexible-spacer",
@@ -1233,8 +1270,8 @@
       "description": "Side sheet / drawer (Radix dialog).",
       "dependencies": [
         "@radix-ui/react-dialog",
-        "class-variance-authority",
-        "lucide-react"
+        "@tabler/icons-react",
+        "class-variance-authority"
       ],
       "registryDependencies": [
         "utils",
@@ -1254,8 +1291,8 @@
       "description": "Full sidebar system (provider, menu, groups, rail).",
       "dependencies": [
         "@radix-ui/react-tooltip",
-        "class-variance-authority",
-        "lucide-react"
+        "@tabler/icons-react",
+        "class-variance-authority"
       ],
       "registryDependencies": [
         "button",
@@ -1279,7 +1316,7 @@
       "description": "Slide-over panel.",
       "dependencies": [
         "@headlessui/react",
-        "lucide-react"
+        "@tabler/icons-react"
       ],
       "registryDependencies": [
         "button",
@@ -1304,7 +1341,7 @@
       "description": "Sort field / direction control.",
       "dependencies": [
         "@radix-ui/react-icons",
-        "lucide-react"
+        "@tabler/icons-react"
       ],
       "registryDependencies": [
         "popover",
@@ -1328,7 +1365,7 @@
         "@dnd-kit/modifiers",
         "@dnd-kit/sortable",
         "@dnd-kit/utilities",
-        "lucide-react",
+        "@tabler/icons-react",
         "react-textarea-autosize"
       ],
       "registryDependencies": [
@@ -1350,7 +1387,7 @@
       ],
       "description": "Loading spinner.",
       "dependencies": [
-        "lucide-react"
+        "@tabler/icons-react"
       ],
       "registryDependencies": [
         "utils",
@@ -1388,7 +1425,7 @@
       ],
       "description": "Status indicator icon.",
       "dependencies": [
-        "lucide-react"
+        "@tabler/icons-react"
       ],
       "registryDependencies": [
         "utils",
@@ -1407,8 +1444,8 @@
       ],
       "description": "Data table with selection + row actions.",
       "dependencies": [
-        "class-variance-authority",
-        "lucide-react"
+        "@tabler/icons-react",
+        "class-variance-authority"
       ],
       "registryDependencies": [
         "checkbox",
@@ -1485,6 +1522,7 @@
       ],
       "description": "Rich text editor (TipTap).",
       "dependencies": [
+        "@tabler/icons-react",
         "@tiptap/extension-highlight",
         "@tiptap/extension-image",
         "@tiptap/extension-link",
@@ -1497,8 +1535,7 @@
         "@tiptap/extensions",
         "@tiptap/pm",
         "@tiptap/react",
-        "@tiptap/starter-kit",
-        "lucide-react"
+        "@tiptap/starter-kit"
       ],
       "registryDependencies": [
         "button",
@@ -1519,7 +1556,7 @@
       "description": "Switch / boolean toggle.",
       "dependencies": [
         "@radix-ui/react-switch",
-        "lucide-react"
+        "@tabler/icons-react"
       ],
       "registryDependencies": [
         "utils",
@@ -1577,7 +1614,7 @@
       ],
       "description": "Vertical step indicator.",
       "dependencies": [
-        "lucide-react"
+        "@tabler/icons-react"
       ],
       "registryDependencies": [
         "windmill-tokens"

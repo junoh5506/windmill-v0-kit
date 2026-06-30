@@ -5,7 +5,7 @@
 import { Button, type ButtonProps } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import { cva, type VariantProps } from "class-variance-authority";
-import { XIcon } from "lucide-react";
+import { IconX as XIcon } from "@tabler/icons-react";
 import type { ReactNode } from "react";
 
 // NOTE: GradientBackground inlined (gradientBanner token classes preserved verbatim).

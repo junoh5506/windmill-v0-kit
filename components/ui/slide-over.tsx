@@ -9,7 +9,7 @@ import { HStack, VStack } from "@/components/ui/stack";
 import { Header } from "@/components/ui/typography";
 import { cn } from "@/lib/utils";
 import { Dialog, DialogPanel, Transition, TransitionChild } from "@headlessui/react";
-import { XIcon } from "lucide-react";
+import { IconX as XIcon } from "@tabler/icons-react";
 import type { ReactNode } from "react";
 import { Fragment } from "react";
 
