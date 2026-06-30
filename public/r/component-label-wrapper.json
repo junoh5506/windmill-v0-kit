@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "component-label-wrapper",
+  "title": "Component Label Wrapper",
+  "description": "Form field label + error wrapper.",
+  "registryDependencies": [
+    "utils",
+    "windmill-tokens"
+  ],
+  "files": [
+    {
+      "path": "components/ui/component-label-wrapper.tsx",
+      "content": "\"use client\";\n\n// Vendored from packages/ui/src/components/ComponentLabelWrapper/ComponentLabelWrapper.tsx. Styling verbatim; Remix/workspace deps stripped for v0.\n\nimport { cn } from \"@/lib/utils\";\nimport { useMemo, type PropsWithChildren, type ReactNode } from \"react\";\n\n// NOTE: react-hook-form FieldError replaced with a minimal structural type.\nexport interface FieldError {\n  type?: string;\n  message?: string;\n}\n\n// NOTE: Typography Paragraph not vendored; inlined minimal equivalent (text-body-sm tokens preserved).\nconst Paragraph = ({ children }: { children: ReactNode }) => (\n  <div className=\"text-body-sm font-normal text-secondary\">{children}</div>\n);\n\nexport interface ComponentLabelWrapperProps {\n  label?: ReactNode;\n  htmlFor?: string;\n  helpText?: ReactNode;\n  helpTextPlacement?: \"top\" | \"bottom\";\n  inline?: boolean;\n  tooltip?: ReactNode;\n  error?: FieldError;\n}\n\nexport const ComponentLabelWrapper = ({\n  label,\n  htmlFor,\n  helpText,\n  helpTextPlacement = \"bottom\",\n  children,\n  inline,\n  tooltip,\n  error,\n}: PropsWithChildren<ComponentLabelWrapperProps>) => {\n  const help = <Paragraph>{helpText}</Paragraph>;\n\n  const errorMessage = useMemo(() => {\n    if (!error) {\n      return undefined;\n    }\n\n    if (error.message) {\n      return error.message;\n    } else if (error.type === \"required\") {\n      return \"This field is required\";\n    } else if (error.type === \"minLength\") {\n      return `Min length not met`;\n    } else if (error.type === \"maxLength\") {\n      return `Max length exceeded`;\n    } else {\n      return \"Field is invalid\";\n    }\n  }, [error]);\n\n  return (\n    <div className=\"flex flex-col\">\n      {label && (\n        <label\n          htmlFor={htmlFor}\n          className={cn(\n            \"cursor-pointer text-header-sm text-secondary font-medium flex items-center gap-1\",\n            {\n              \"mb-1\": !inline,\n            }\n          )}\n        >\n          {label}\n          {/* NOTE: InfoTooltip dropped for v0; tooltip text rendered inline when present. */}\n          {tooltip && <span className=\"text-tertiary\">{tooltip}</span>}\n        </label>\n      )}\n      {helpText && helpTextPlacement === \"top\" && (\n        <label htmlFor={htmlFor} className=\"mb-1 block\">\n          {help}\n        </label>\n      )}\n      {children}\n      {helpText && helpTextPlacement === \"bottom\" && (\n        <label htmlFor={htmlFor} className=\"mt-1\">\n          {help}\n        </label>\n      )}\n      {errorMessage && <p className=\"mt-2 text-sm text-red\">{errorMessage}</p>}\n    </div>\n  );\n};\n\nexport default ComponentLabelWrapper;\n",
+      "type": "registry:ui"
+    }
+  ],
+  "type": "registry:ui"
+}

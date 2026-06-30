@@ -1,0 +1,21 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "grid",
+  "title": "Grid",
+  "description": "Responsive grid layout.",
+  "dependencies": [
+    "class-variance-authority"
+  ],
+  "registryDependencies": [
+    "utils",
+    "windmill-tokens"
+  ],
+  "files": [
+    {
+      "path": "components/ui/grid.tsx",
+      "content": "\"use client\";\n\n// Vendored from packages/ui/src/components/Grid/Grid.tsx. Styling verbatim; Remix/workspace deps stripped for v0.\n\nimport { cn } from \"@/lib/utils\";\nimport { cva, type VariantProps } from \"class-variance-authority\";\nimport type { ReactNode } from \"react\";\n\ninterface Props {\n  className?: string;\n  children?: ReactNode;\n  columns?: 1 | 2 | 3 | 4 | 5 | 6;\n}\n\nconst gridStyles = cva(\"grid grid-cols-1\", {\n  variants: {\n    columns: {\n      1: \"grid-cols-1\",\n      2: \"@lg:grid-cols-2\",\n      3: \"@lg:grid-cols-3\",\n      4: \"@lg:grid-cols-3 @sm:grid-cols-2 @lg:grid-cols-4\",\n      5: \"@xl:grid-cols-5 @md:grid-cols-3\",\n      6: \"@xl:grid-cols-6 @md:grid-cols-4\",\n    },\n    gap: {\n      none: \"gap-0\",\n      sm: \"gap-2\",\n      md: \"gap-4\",\n      lg: \"gap-8\",\n    },\n    equalHeights: {\n      false: \"items-start\",\n    },\n  },\n  defaultVariants: {\n    columns: 2,\n    gap: \"md\",\n    equalHeights: true,\n  },\n});\n\nconst Grid = ({ className, children, ...styles }: Props & VariantProps<typeof gridStyles>) => {\n  return (\n    <div className=\"@container\">\n      <div className={cn(gridStyles(styles), className)}>{children}</div>\n    </div>\n  );\n};\n\nexport default Grid;\n",
+      "type": "registry:ui"
+    }
+  ],
+  "type": "registry:ui"
+}

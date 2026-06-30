@@ -1,0 +1,21 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "spinner",
+  "title": "Spinner",
+  "description": "Loading spinner.",
+  "dependencies": [
+    "lucide-react"
+  ],
+  "registryDependencies": [
+    "utils",
+    "windmill-tokens"
+  ],
+  "files": [
+    {
+      "path": "components/ui/spinner.tsx",
+      "content": "\"use client\";\n\n// Vendored from packages/ui/src/components/Spinner/Spinner.tsx. Styling verbatim; Remix/workspace deps stripped for v0.\n\nimport { cn } from \"@/lib/utils\";\nimport { Loader2 } from \"lucide-react\";\nimport { forwardRef } from \"react\";\n\ninterface Props {\n  className?: string;\n  size?: \"xs\" | \"sm\" | \"md\" | \"lg\";\n}\n\n// NOTE: react-icons CgSpinner mapped to lucide-react Loader2.\nconst Spinner = forwardRef<HTMLDivElement, Props>(({ className, size = \"md\" }, ref) => (\n  <div ref={ref} className={cn(\"flex items-center justify-center p-4\", className)}>\n    <Loader2\n      className={cn(\"animate-spin  opacity-70\", {\n        \"text-sm\": size === \"xs\",\n        \"text-base\": size === \"sm\",\n        \"text-2xl\": size === \"md\",\n        \"text-4xl\": size === \"lg\",\n      })}\n    />\n  </div>\n));\n\nSpinner.displayName = \"Spinner\";\n\nexport default Spinner;\n",
+      "type": "registry:ui"
+    }
+  ],
+  "type": "registry:ui"
+}

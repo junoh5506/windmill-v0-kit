@@ -1,0 +1,21 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "tooltip",
+  "title": "Tooltip",
+  "description": "Tooltip (Radix).",
+  "dependencies": [
+    "@radix-ui/react-tooltip"
+  ],
+  "registryDependencies": [
+    "utils",
+    "windmill-tokens"
+  ],
+  "files": [
+    {
+      "path": "components/ui/tooltip.tsx",
+      "content": "\"use client\";\n\n// Vendored from packages/ui/src/components/Tooltip/Tooltip.tsx. Styling verbatim; Remix/workspace deps stripped for v0.\n\nimport { cn } from \"@/lib/utils\";\nimport * as TooltipPrimitive from \"@radix-ui/react-tooltip\";\nimport type { TooltipContentProps } from \"@radix-ui/react-tooltip\";\nimport { forwardRef, type ComponentPropsWithoutRef, type ElementRef, type ReactNode } from \"react\";\n\n// Inlined from packages/ui/src/shadcn/ShadTooltip.tsx so this file is self-contained.\nconst ShadTooltipProvider = TooltipPrimitive.Provider;\nconst ShadTooltip = TooltipPrimitive.Root;\nconst ShadTooltipTrigger = TooltipPrimitive.Trigger;\n\nconst ShadTooltipContent = forwardRef<\n  ElementRef<typeof TooltipPrimitive.Content>,\n  ComponentPropsWithoutRef<typeof TooltipPrimitive.Content>\n>(({ className, sideOffset = 4, ...props }, ref) => (\n  <TooltipPrimitive.Portal>\n    <TooltipPrimitive.Content\n      ref={ref}\n      sideOffset={sideOffset}\n      className={cn(\n        \"z-50 overflow-hidden rounded-md bg-accent text-accent-inverse animate-in fade-in-0 zoom-in-95 data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=closed]:zoom-out-95 data-[side=bottom]:slide-in-from-top-2 data-[side=left]:slide-in-from-right-2 data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2\",\n        className\n      )}\n      {...props}\n    />\n  </TooltipPrimitive.Portal>\n));\nShadTooltipContent.displayName = TooltipPrimitive.Content.displayName;\n\nexport interface TooltipProps extends Pick<TooltipContentProps, \"side\"> {\n  children?: ReactNode;\n  tooltip?: ReactNode;\n  /** Shortens the delay to 100ms for \"instant\" tooltips. */\n  instant?: boolean;\n  tooltipClassName?: string;\n  /** Use card when the tooltip has more content. Compact is default */\n  variant?: \"compact\" | \"card\";\n  /** Controls whether the tooltip is open */\n  open?: boolean;\n}\n\nconst Tooltip = ({\n  children,\n  tooltip,\n  instant,\n  side,\n  tooltipClassName,\n  variant = \"compact\",\n  open,\n}: TooltipProps) => (\n  <ShadTooltipProvider delayDuration={instant ? 100 : 400}>\n    <ShadTooltip open={open}>\n      <ShadTooltipTrigger asChild>{children}</ShadTooltipTrigger>\n      <ShadTooltipContent\n        updatePositionStrategy=\"always\"\n        className={cn(\n          \"text-ui shadow-lg dark-container border border-solid border-[#3F3F48] rounded-lg\",\n          { \"max-w-[250px] px-3 py-1\": variant === \"compact\" },\n          { \"max-w-sm p-3 py-1.5\": variant === \"card\" },\n          tooltipClassName\n        )}\n        side={side}\n      >\n        {tooltip}\n      </ShadTooltipContent>\n    </ShadTooltip>\n  </ShadTooltipProvider>\n);\n\nexport default Tooltip;\n",
+      "type": "registry:ui"
+    }
+  ],
+  "type": "registry:ui"
+}

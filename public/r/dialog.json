@@ -1,0 +1,21 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "dialog",
+  "title": "Dialog",
+  "description": "Modal dialog (Radix).",
+  "dependencies": [
+    "@radix-ui/react-dialog"
+  ],
+  "registryDependencies": [
+    "utils",
+    "windmill-tokens"
+  ],
+  "files": [
+    {
+      "path": "components/ui/dialog.tsx",
+      "content": "\"use client\";\n\n// Vendored from packages/ui/src/components/Dialog/DialogCore.tsx. Overlay/Content styling copied verbatim; the @wind useBool BoolState API is replaced with standard open/onOpenChange props for v0.\n\nimport { cn } from \"@/lib/utils\";\nimport * as DialogPrimitive from \"@radix-ui/react-dialog\";\nimport type { ReactNode } from \"react\";\n\nexport const Dialog = DialogPrimitive.Root;\nexport const DialogTrigger = DialogPrimitive.Trigger;\nexport const DialogClose = DialogPrimitive.Close;\nexport const DialogTitle = DialogPrimitive.Title;\nexport const DialogDescription = DialogPrimitive.Description;\n\ninterface DialogContentProps {\n  open: boolean;\n  onOpenChange: (open: boolean) => void;\n  size?: \"sm\" | \"md\" | \"lg\" | \"xl\" | \"2xl\";\n  closeable?: boolean;\n  onClose?: () => void;\n  onOpenAutoFocus?: (event: Event) => void;\n  children: ReactNode;\n}\n\nexport function DialogContent({\n  open,\n  onOpenChange,\n  size = \"md\",\n  closeable = true,\n  onClose,\n  onOpenAutoFocus,\n  children,\n}: DialogContentProps) {\n  return (\n    <DialogPrimitive.Root\n      open={open}\n      onOpenChange={(next) => {\n        if (!next && (closeable ?? true)) {\n          onClose?.();\n        }\n        onOpenChange(next);\n      }}\n    >\n      <DialogPrimitive.Portal>\n        <DialogPrimitive.Overlay className=\"data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 fixed inset-0 z-50 bg-black/50\" />\n        <div className=\"fixed inset-0 z-50 overflow-y-auto\">\n          <div className=\"flex min-h-full items-start justify-center p-4 pt-8 text-center sm:p-0 sm:pt-8\">\n            <DialogPrimitive.Content\n              aria-describedby={undefined}\n              onOpenAutoFocus={onOpenAutoFocus}\n              className={cn(\n                \"relative transform overflow-hidden w-full mb-8 sm:mb-0 rounded-lg border border-base bg-base text-left shadow-xl transition-all data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95 data-[state=closed]:slide-out-to-top-1/2 data-[state=open]:slide-in-from-top-1/2\",\n                {\n                  \"sm:my-4 sm:max-w-md\": size === \"sm\",\n                  \"sm:my-8 sm:max-w-lg\": size === \"md\",\n                  \"sm:my-10 sm:max-w-2xl\": size === \"lg\",\n                  \"sm:my-12 sm:max-w-4xl\": size === \"xl\",\n                  \"sm:my-12 sm:max-w-6xl\": size === \"2xl\",\n                }\n              )}\n            >\n              {children}\n            </DialogPrimitive.Content>\n          </div>\n        </div>\n      </DialogPrimitive.Portal>\n    </DialogPrimitive.Root>\n  );\n}\n\nexport default DialogContent;\n",
+      "type": "registry:ui"
+    }
+  ],
+  "type": "registry:ui"
+}

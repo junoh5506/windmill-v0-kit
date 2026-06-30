@@ -1,0 +1,19 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "navigation-loading-spinner",
+  "title": "Navigation Loading Spinner",
+  "description": "Top navigation loading spinner.",
+  "registryDependencies": [
+    "spinner",
+    "utils",
+    "windmill-tokens"
+  ],
+  "files": [
+    {
+      "path": "components/ui/navigation-loading-spinner.tsx",
+      "content": "\"use client\";\n\n// Vendored from packages/ui/src/components/NavigationLoadingSpinner/NavigationLoadingSpinner.tsx. Verbatim animation; @wind/Remix deps stripped for v0.\n// NOTE: Remix useNavigation/useLocation (which detect a same-page reload) collapse to a single `loading` boolean prop.\n\nimport Spinner from \"@/components/ui/spinner\";\nimport { cn } from \"@/lib/utils\";\n\ninterface NavigationLoadingSpinnerProps {\n  /** Replaces Remix's \"reloading the same page\" detection. */\n  loading?: boolean;\n}\n\nconst NavigationLoadingSpinner = ({ loading = false }: NavigationLoadingSpinnerProps) => {\n  return (\n    <Spinner\n      className={cn(\"opacity-0 p-2\", {\n        \"md:opacity-50\": loading,\n      })}\n    />\n  );\n};\n\nexport default NavigationLoadingSpinner;\n",
+      "type": "registry:ui"
+    }
+  ],
+  "type": "registry:ui"
+}

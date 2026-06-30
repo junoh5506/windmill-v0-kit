@@ -1,0 +1,21 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "keyboard",
+  "title": "Keyboard",
+  "description": "Keyboard shortcut hint.",
+  "dependencies": [
+    "lucide-react"
+  ],
+  "registryDependencies": [
+    "utils",
+    "windmill-tokens"
+  ],
+  "files": [
+    {
+      "path": "components/ui/keyboard.tsx",
+      "content": "\"use client\";\n\n// Vendored from packages/ui/src/components/Keyboard/Keyboard.tsx. Styling verbatim; Remix/workspace deps stripped for v0. react-icons swapped for lucide-react equivalents.\n\nimport { cn } from \"@/lib/utils\";\nimport {\n  ArrowBigUp,\n  ArrowDownSquare,\n  ArrowLeftSquare,\n  ArrowRightSquare,\n  ArrowUpSquare,\n  CornerDownLeft,\n  Command,\n  Delete,\n  Option,\n  TabletSmartphone,\n} from \"lucide-react\";\nimport type { ReactNode } from \"react\";\n\n// NOTE: original mapped react-icons/bs + react-icons/md; substituted nearest lucide-react icons.\nconst keyMap: Record<string, ReactNode> = {\n  command: <Command />,\n  meta: <Command />,\n  return: <CornerDownLeft />,\n  enter: <CornerDownLeft />,\n  shift: <ArrowBigUp />,\n  alt: <Option />,\n  arrowup: <ArrowUpSquare />,\n  arrowdown: <ArrowDownSquare />,\n  arrowleft: <ArrowLeftSquare />,\n  arrowright: <ArrowRightSquare />,\n  backspace: <Delete />,\n  tab: <TabletSmartphone />,\n  escape: \"ESC\",\n};\n\nexport interface Props {\n  className?: string;\n  children: string;\n}\n\nconst Keyboard = ({ className, children }: Props) => (\n  <kbd\n    className={cn(\n      className,\n      \"bg-text/10 flex h-5 items-center gap-1 rounded border border-text/20 bg-base/20 px-2 py-1 font-mono text-xs font-semibold\"\n    )}\n  >\n    {children.split(\"+\").map((char) => {\n      if (char.toLowerCase() in keyMap) {\n        return (\n          <span key={char}>\n            {keyMap[char.toLowerCase()]} <span className=\"sr-only\">{char}</span>\n          </span>\n        );\n      } else {\n        return (\n          <span key={char} style={{ fontSize: \"0.8rem\" }}>\n            {char.toUpperCase()}\n          </span>\n        );\n      }\n    })}\n  </kbd>\n);\n\nexport default Keyboard;\n",
+      "type": "registry:ui"
+    }
+  ],
+  "type": "registry:ui"
+}

@@ -1,0 +1,20 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "checkbox-with-label",
+  "title": "Checkbox With Label",
+  "description": "Checkbox with label + description.",
+  "registryDependencies": [
+    "checkbox",
+    "stack",
+    "utils",
+    "windmill-tokens"
+  ],
+  "files": [
+    {
+      "path": "components/ui/checkbox-with-label.tsx",
+      "content": "\"use client\";\n\n// Vendored from packages/ui/src/components/CheckboxWithLabel/CheckboxWithLabel.tsx. Styling verbatim; Remix/workspace deps stripped for v0.\n\nimport { Checkbox } from \"@/components/ui/checkbox\";\nimport { HStack, VStack } from \"@/components/ui/stack\";\nimport { cn } from \"@/lib/utils\";\nimport { forwardRef, type ReactNode } from \"react\";\n\n// NOTE: Typography Label/Paragraph not vendored; inlined minimal equivalents (text-body-sm tokens preserved).\nconst Label = ({\n  intent = \"primary\",\n  children,\n}: {\n  intent?: \"primary\" | \"secondary\";\n  children: ReactNode;\n}) => (\n  <div\n    className={cn(\"text-body-sm font-medium\", {\n      \"text-primary\": intent === \"primary\",\n      \"text-secondary\": intent === \"secondary\",\n    })}\n  >\n    {children}\n  </div>\n);\n\nconst Paragraph = ({ children }: { children: ReactNode }) => (\n  <div className=\"text-body-sm font-normal text-secondary\">{children}</div>\n);\n\nexport interface CheckboxWithLabelProps extends Omit<React.ComponentProps<typeof Checkbox>, \"id\"> {\n  id: string;\n  label: ReactNode;\n  description?: ReactNode;\n  labelPosition?: \"left\" | \"right\";\n  className?: string;\n}\n\nexport const CheckboxWithLabel = forwardRef<HTMLInputElement, CheckboxWithLabelProps>(\n  (\n    { id, label, description, labelPosition = \"right\", className, disabled, ...checkboxProps },\n    ref\n  ) => {\n    const labelContent = (\n      <label\n        htmlFor={id}\n        className={cn(\"block\", {\n          \"cursor-not-allowed opacity-50\": disabled,\n          \"cursor-pointer\": !disabled,\n          \"pl-2\": labelPosition === \"right\",\n          \"pr-2\": labelPosition === \"left\",\n        })}\n      >\n        <VStack gapNone>\n          <Label intent=\"secondary\">{label}</Label>\n          {description && <Paragraph>{description}</Paragraph>}\n        </VStack>\n      </label>\n    );\n\n    const checkbox = <Checkbox {...checkboxProps} disabled={disabled} id={id} ref={ref} />;\n\n    return (\n      <div className={cn(\"flex items-start\", className)}>\n        {labelPosition === \"left\" ? (\n          <HStack gapNone>\n            {labelContent}\n            {checkbox}\n          </HStack>\n        ) : (\n          <HStack gapNone>\n            {checkbox}\n            {labelContent}\n          </HStack>\n        )}\n      </div>\n    );\n  }\n);\n\nCheckboxWithLabel.displayName = \"CheckboxWithLabel\";\n\nexport default CheckboxWithLabel;\n",
+      "type": "registry:ui"
+    }
+  ],
+  "type": "registry:ui"
+}

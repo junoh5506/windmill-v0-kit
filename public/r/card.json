@@ -1,0 +1,21 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "card",
+  "title": "Card",
+  "description": "Surface container with Header / Body / Footer.",
+  "dependencies": [
+    "lucide-react"
+  ],
+  "registryDependencies": [
+    "utils",
+    "windmill-tokens"
+  ],
+  "files": [
+    {
+      "path": "components/ui/card.tsx",
+      "content": "\"use client\";\n\n// Vendored from packages/ui/src/components/Card/Card.tsx. Styling copied verbatim; framer-motion/Spinner/Link/Tooltip/Button workspace deps stripped for v0.\n// NOTE: CardHeader's `isLoading` spinner (framer-motion) and `viewDetailLink` (Remix Link) are dropped. `button` accepts a ReactNode instead of ButtonProps. Title/Label render as a plain styled element.\n\nimport { cn } from \"@/lib/utils\";\nimport { ArrowRight } from \"lucide-react\";\nimport type { ReactNode } from \"react\";\n\ninterface Props {\n  children: ReactNode;\n  className?: string;\n  id?: string;\n}\n\nconst CardHeader = ({\n  icon,\n  title,\n  className,\n  accessory,\n  button,\n  viewDetailLink,\n}: {\n  icon?: ReactNode;\n  title: ReactNode;\n  className?: string;\n  accessory?: ReactNode;\n  button?: ReactNode;\n  viewDetailLink?: {\n    to: string;\n    label?: string;\n  };\n}) => {\n  return (\n    <div\n      className={cn(\n        \"flex flex-wrap items-center w-full gap-y-1 gap-x-3 border-b px-4 py-2 bg-surface-muted/50\",\n        {\n          \"pr-2\": button,\n        },\n        className\n      )}\n    >\n      <div className=\"flex items-center gap-3\">\n        {icon && (\n          <div className=\"flex items-center gap-2\">\n            <span>{icon}</span>\n          </div>\n        )}\n        <span className=\"text-body-sm font-medium text-primary\">{title}</span>\n      </div>\n      <div className=\"flex-grow\" />\n      <div>\n        {accessory}\n        {button}\n        {viewDetailLink && (\n          <a\n            href={viewDetailLink.to}\n            className=\"group/view-all-link flex items-center gap-1 text-sm text-secondary underline-offset-2 transition-all hover:text-primary hover:underline\"\n          >\n            {viewDetailLink.label ?? \"View All\"}\n            <ArrowRight className=\"w-[1.2em] -rotate-45 opacity-50 transition-all group-hover/view-all-link:-translate-y-[2px] group-hover/view-all-link:translate-x-[2px] group-hover/view-all-link:opacity-90\" />\n          </a>\n        )}\n      </div>\n    </div>\n  );\n};\n\nexport const CardBody = ({\n  children,\n  className,\n  id,\n  maxHeight,\n  noPadding,\n}: {\n  children: ReactNode;\n  className?: string;\n  id?: string;\n  maxHeight?: boolean;\n  noPadding?: boolean;\n}) => {\n  return (\n    <div\n      id={id}\n      className={cn(\n        \"flex-grow\",\n        {\n          \"\": noPadding,\n          \"p-4\": !noPadding,\n        },\n        {\n          \"max-h-72 overflow-y-auto\": maxHeight,\n        },\n        className\n      )}\n    >\n      {children}\n    </div>\n  );\n};\n\nconst CardFooter = ({\n  children,\n  id,\n  className,\n}: {\n  children: ReactNode;\n  id?: string;\n  className?: string;\n}) => {\n  return (\n    <div id={id} className={cn(\"border-t bg-surface-muted px-4 py-2\", className)}>\n      {children}\n    </div>\n  );\n};\n\nconst CardActions = ({ children, className }: { children: ReactNode; className?: string }) => {\n  return (\n    <div\n      className={cn(\n        \"border-blue bg-blue flex flex-col gap-2 border-t bg-opacity-20 px-2 py-2 md:flex-row md:items-center md:justify-end\",\n        className\n      )}\n    >\n      {children}\n    </div>\n  );\n};\n\nexport const Card = ({ className, children, id }: Props) => {\n  return (\n    <div\n      id={id}\n      className={cn(\n        \"overflow-hidden rounded-lg border bg-surface shadow-sm flex flex-col\",\n        className\n      )}\n    >\n      {children}\n    </div>\n  );\n};\n\nCard.Body = CardBody;\nCard.Footer = CardFooter;\nCard.Actions = CardActions;\nCard.Header = CardHeader;\n\nexport default Card;\n",
+      "type": "registry:ui"
+    }
+  ],
+  "type": "registry:ui"
+}

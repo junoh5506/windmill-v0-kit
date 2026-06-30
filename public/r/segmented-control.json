@@ -1,0 +1,22 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "segmented-control",
+  "title": "Segmented Control",
+  "description": "Segmented multi-option control.",
+  "dependencies": [
+    "@radix-ui/react-toggle-group",
+    "class-variance-authority"
+  ],
+  "registryDependencies": [
+    "utils",
+    "windmill-tokens"
+  ],
+  "files": [
+    {
+      "path": "components/ui/segmented-control.tsx",
+      "content": "\"use client\";\n\n// Vendored from packages/ui/src/components/SegmentedControl/SegmentedControl.tsx. Styling verbatim; Remix/workspace deps stripped for v0.\n\nimport { cn } from \"@/lib/utils\";\nimport * as ToggleGroup from \"@radix-ui/react-toggle-group\";\nimport { cva, type VariantProps } from \"class-variance-authority\";\nimport type { ReactNode } from \"react\";\n\nexport interface SegmentedControlOption {\n  value: string;\n  label: string;\n  icon?: ReactNode;\n}\n\nconst DEFAULT_VARIANTS = {\n  size: \"md\",\n  variant: \"segmented\",\n} as const;\n\nconst segmentedControlStyles = cva(\"inline-flex bg-surface p-[3px]\", {\n  variants: {\n    size: {\n      sm: \"h-8\",\n      md: \"\",\n      lg: \"\",\n    },\n    variant: {\n      segmented: \"rounded-lg border gap-0.5\",\n      pills: \"rounded-full gap-1\",\n      icons: \"rounded-lg border gap-0.5\",\n    },\n  },\n  defaultVariants: DEFAULT_VARIANTS,\n});\n\nconst segmentedControlItemStyles = cva(\n  \"relative inline-flex items-center justify-center border border-transparent font-medium transition-colors hover:bg-accent/5\",\n  {\n    variants: {\n      size: {\n        sm: \"px-3 py-1 text-body-sm\",\n        md: \"px-4 py-1.5 text-body-md\",\n        lg: \"px-5 py-2 text-body-md\",\n      },\n      variant: {\n        segmented: \"rounded-md\",\n        pills: \"rounded-full border\",\n        icons: \"rounded-md\",\n      },\n      selected: {\n        true: \"border-accent text-primary shadow-sm\",\n        false: \"text-secondary\",\n      },\n    },\n    defaultVariants: DEFAULT_VARIANTS,\n  }\n);\n\nconst segmentedControlIndicatorStyles = cva(\"absolute left-0 top-0 h-full w-full bg-accent/10\", {\n  variants: {\n    variant: {\n      segmented: \"rounded-md\",\n      pills: \"rounded-full\",\n      icons: \"rounded-md\",\n    },\n    size: {\n      sm: \"\",\n      md: \"\",\n      lg: \"\",\n    },\n  },\n  defaultVariants: DEFAULT_VARIANTS,\n});\n\ninterface Props extends VariantProps<typeof segmentedControlStyles> {\n  options: SegmentedControlOption[];\n  value: string;\n  onChange: (value: string) => void;\n  className?: string;\n}\n\nexport const SegmentedControl = ({\n  options,\n  value,\n  onChange,\n  size = \"md\",\n  variant = \"segmented\",\n  className,\n}: Props) => {\n  return (\n    <ToggleGroup.Root\n      type=\"single\"\n      value={value}\n      onValueChange={(newValue) => {\n        if (newValue) {\n          onChange(newValue);\n        }\n      }}\n      asChild\n    >\n      {/* NOTE: framer-motion layout animation dropped; plain div + Tailwind transition stands in. */}\n      <div className={cn(segmentedControlStyles({ size, variant }), className)}>\n        {options.map((option) => {\n          const isSelected = value === option.value;\n          return (\n            // NOTE: icons-variant Tooltip wrapper dropped for v0; label exposed via aria-label.\n            <ToggleGroup.Item\n              key={option.value}\n              value={option.value}\n              aria-label={variant === \"icons\" ? option.label : undefined}\n              className={segmentedControlItemStyles({ size, variant, selected: isSelected })}\n            >\n              {isSelected && (\n                <div\n                  className={cn(\n                    segmentedControlIndicatorStyles({ size, variant }),\n                    \"transition-all duration-100\"\n                  )}\n                />\n              )}\n              <span className=\"relative inline-flex items-center gap-1.5\">\n                {option.icon}\n                {variant !== \"icons\" && option.label}\n              </span>\n            </ToggleGroup.Item>\n          );\n        })}\n      </div>\n    </ToggleGroup.Root>\n  );\n};\n\nexport default SegmentedControl;\n",
+      "type": "registry:ui"
+    }
+  ],
+  "type": "registry:ui"
+}

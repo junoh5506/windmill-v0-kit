@@ -1,0 +1,21 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "divider",
+  "title": "Divider",
+  "description": "Horizontal / vertical divider.",
+  "dependencies": [
+    "class-variance-authority"
+  ],
+  "registryDependencies": [
+    "utils",
+    "windmill-tokens"
+  ],
+  "files": [
+    {
+      "path": "components/ui/divider.tsx",
+      "content": "\"use client\";\n\n// Vendored from packages/ui/src/components/Divider/Divider.tsx. Styling verbatim; Remix/workspace deps stripped for v0.\n\nimport { cn } from \"@/lib/utils\";\nimport { cva, type VariantProps } from \"class-variance-authority\";\n\ninterface Props {\n  className?: string;\n}\n\nconst dividerStyles = cva(\"\", {\n  variants: {\n    orientation: {\n      horizontal: \"h-[1px] w-full my-1\",\n      vertical: \"w-[1px] h-full mx-1\",\n    },\n    color: {\n      primary: \"bg-border\",\n      \"accent-inverse\": \"bg-accent-inverse\",\n    },\n  },\n  defaultVariants: {\n    orientation: \"horizontal\",\n    color: \"primary\",\n  },\n});\n\nconst Divider = ({ className, ...variantStyles }: Props & VariantProps<typeof dividerStyles>) => {\n  return <div className={cn(dividerStyles(variantStyles), className)} />;\n};\n\nexport default Divider;\n",
+      "type": "registry:ui"
+    }
+  ],
+  "type": "registry:ui"
+}

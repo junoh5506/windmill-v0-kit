@@ -1,0 +1,21 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "hover-card",
+  "title": "Hover Card",
+  "description": "Hover card (Radix).",
+  "dependencies": [
+    "@radix-ui/react-hover-card"
+  ],
+  "registryDependencies": [
+    "utils",
+    "windmill-tokens"
+  ],
+  "files": [
+    {
+      "path": "components/ui/hover-card.tsx",
+      "content": "\"use client\";\n\n// Vendored from packages/ui/src/components/HoverCard/HoverCard.tsx. Styling verbatim; Remix/workspace deps stripped for v0.\n\nimport { cn } from \"@/lib/utils\";\nimport { Content, Portal, Root, Trigger } from \"@radix-ui/react-hover-card\";\nimport {\n  forwardRef,\n  type ComponentProps,\n  type ComponentPropsWithoutRef,\n  type ElementRef,\n  type FC,\n} from \"react\";\n\nconst HoverCard: FC<ComponentProps<typeof Root>> = ({ children, ...props }) => {\n  return (\n    <Root openDelay={700} {...props}>\n      {children}\n    </Root>\n  );\n};\n\nconst HoverCardTrigger = Trigger;\n\nconst HoverCardPortal = Portal;\n\nexport type HoverCardSide = \"top\" | \"right\" | \"bottom\" | \"left\";\n\ninterface HoverCardContentProps extends ComponentPropsWithoutRef<typeof Content> {\n  align?: \"center\" | \"start\" | \"end\";\n  side?: HoverCardSide;\n  sideOffset?: number;\n  className?: string;\n}\n\nconst HoverCardContent = forwardRef<ElementRef<typeof Content>, HoverCardContentProps>(\n  ({ className, align = \"center\", side = \"left\", sideOffset = 4, ...props }, ref) => (\n    <HoverCardPortal>\n      <Content\n        ref={ref}\n        align={align}\n        sideOffset={sideOffset}\n        side={side}\n        className={cn(\n          \"text-popover-foreground z-50 w-64 rounded-md border bg-surface p-4 shadow-md outline-none data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95 data-[side=bottom]:slide-in-from-top-2 data-[side=left]:slide-in-from-right-2 data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2\",\n          className\n        )}\n        {...props}\n      />\n    </HoverCardPortal>\n  )\n);\nHoverCardContent.displayName = Content.displayName;\n\nexport { HoverCard, HoverCardContent, HoverCardTrigger };\n",
+      "type": "registry:ui"
+    }
+  ],
+  "type": "registry:ui"
+}

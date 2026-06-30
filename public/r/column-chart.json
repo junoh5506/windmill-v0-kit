@@ -1,0 +1,23 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "column-chart",
+  "title": "Column Chart",
+  "description": "Column / bar chart.",
+  "dependencies": [
+    "class-variance-authority",
+    "recharts"
+  ],
+  "registryDependencies": [
+    "typography",
+    "utils",
+    "windmill-tokens"
+  ],
+  "files": [
+    {
+      "path": "components/ui/column-chart.tsx",
+      "content": "\"use client\";\n\n// Vendored from packages/ui/src/components/ColumnChart. Styling verbatim; @wind/Remix deps stripped for v0.\n\nimport { Header } from \"@/components/ui/typography\";\nimport { cn } from \"@/lib/utils\";\nimport { cva, type VariantProps } from \"class-variance-authority\";\nimport { Bar, BarChart, ResponsiveContainer, Tooltip, XAxis, YAxis } from \"recharts\";\n\ntype StringKey<T> = Extract<keyof T, string>;\n\ninterface Props<T extends Record<string, unknown>> {\n  className?: string;\n  data: T[];\n  columns: Array<StringKey<T>>;\n  xAxis: StringKey<T>;\n  showXAxis?: boolean;\n  showYAxis?: boolean;\n  title?: string;\n  stacked?: boolean;\n}\n\nconst chartColors: string[] = [\"#003f5c\", \"#58508d\", \"#bc5090\", \"#ff6361\", \"#ffa600\"];\n\nconst columnChartStyles = cva(\"\", {\n  variants: {},\n  defaultVariants: {},\n});\n\n// NOTE: remix-utils ClientOnly wrapper dropped — recharts renders directly in v0.\nfunction ColumnChart<T extends Record<string, unknown>>({\n  className,\n  data,\n  title,\n  columns,\n  xAxis,\n  stacked,\n  showXAxis = false,\n  showYAxis = false,\n  ...variants\n}: Props<T> & VariantProps<typeof columnChartStyles>) {\n  return (\n    <div className={cn(columnChartStyles(variants), className)}>\n      {title && <Header level={3}>{title}</Header>}\n      <div className=\"h-72\">\n        <ResponsiveContainer width=\"100%\" height=\"100%\">\n          <BarChart data={data}>\n            {xAxis && <XAxis dataKey={xAxis} hide={!showXAxis} />}\n            {/* Dynamic Y Axis */}\n            <YAxis hide={!showYAxis} domain={[0, \"dataMax\"]} type=\"number\" />\n            <Tooltip />\n            {columns.map((c, i) => (\n              // Use css variable for fill\n              <Bar\n                dataKey={c}\n                isAnimationActive={false}\n                fill={chartColors[i]}\n                key={c}\n                minPointSize={2}\n                stackId={stacked ? \"a\" : undefined}\n              />\n            ))}\n          </BarChart>\n        </ResponsiveContainer>\n      </div>\n    </div>\n  );\n}\n\nexport default ColumnChart;\n",
+      "type": "registry:ui"
+    }
+  ],
+  "type": "registry:ui"
+}

@@ -1,0 +1,21 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "status-icon",
+  "title": "Status Icon",
+  "description": "Status indicator icon.",
+  "dependencies": [
+    "lucide-react"
+  ],
+  "registryDependencies": [
+    "utils",
+    "windmill-tokens"
+  ],
+  "files": [
+    {
+      "path": "components/ui/status-icon.tsx",
+      "content": "\"use client\";\n\n// Vendored from packages/ui/src/components/StatusIcon/StatusIcon.tsx. Styling verbatim; Remix/workspace deps stripped for v0.\n\nimport { cn } from \"@/lib/utils\";\nimport { CheckCircle, Loader, PauseCircle, XCircle } from \"lucide-react\";\n\ninterface Props {\n  className?: string;\n  status: string | boolean;\n  size?: \"sm\" | \"md\" | \"lg\";\n}\n\nconst SUCCESS_STRINGS = [\n  \"SUCCESS\",\n  \"FINISHED\",\n  \"COMPLETED\",\n  \"DONE\",\n  \"ACHIEVED\",\n  \"FULFILLED\",\n  \"REACHED\",\n  \"COMPLETE\",\n  \"ACTIVE\",\n  \"ACCEPTED\",\n];\nconst ERROR_STRINGS = [\n  \"ERROR\",\n  \"FAILED\",\n  \"ABORTED\",\n  \"TERMINATED\",\n  \"STOPPED\",\n  \"UNSUCCESSFUL\",\n  \"DISRUPTED\",\n  \"DECLINED\",\n];\n\nconst WARNING_STRINGS = [\"WARNING\", \"UNSTABLE\", \"UNRELIABLE\"];\nconst IN_PROGRESS_STRINGS = [\n  \"RUNNING\",\n  \"STARTED\",\n  \"IN_PROGRESS\",\n  \"ONGOING\",\n  \"PROGRESSING\",\n  \"UNDERWAY\",\n  \"UNFINISHED\",\n  \"LOADING\",\n];\n\nconst PAUSED_STRINGS = [\"PAUSED\", \"SUSPENDED\"];\n\nconst options = {\n  success: SUCCESS_STRINGS,\n  error: ERROR_STRINGS,\n  in_progress: IN_PROGRESS_STRINGS,\n  paused: PAUSED_STRINGS,\n  warning: WARNING_STRINGS,\n};\n\n// NOTE: react-icons mapped to lucide-react: FaRegCheckCircle->CheckCircle,\n// FaRegTimesCircle->XCircle, VscLoading->Loader, BsPauseCircle->PauseCircle.\n// The warning glyph (FaExclamation in a ring) is recreated inline.\nexport const StatusIcon = ({ status, size = \"md\" }: Props) => {\n  let resolvedStatus = status;\n  if (resolvedStatus === true) {\n    resolvedStatus = \"success\";\n  }\n  if (resolvedStatus === false) {\n    resolvedStatus = \"error\";\n  }\n  const uppercaseStatus = resolvedStatus.toString().toUpperCase();\n\n  const parsedStatus = Object.entries(options).find(([, value]) => {\n    return value.includes(uppercaseStatus);\n  })?.[0] as keyof typeof options | undefined;\n\n  if (!parsedStatus) {\n    return null;\n  }\n\n  // Ensure consistent application of classes\n  const iconClassName = cn(\n    \"flex-none circle-6\",\n    {\n      \"text-xs\": size === \"sm\",\n      \"\": size === \"md\",\n      \"text-xl\": size === \"lg\",\n    },\n    {\n      \"text-green bg-green\": parsedStatus === \"success\",\n      \"text-red bg-red\": parsedStatus === \"error\",\n      \"text-yellow bg-yellow\": parsedStatus === \"warning\",\n      \"\": parsedStatus === \"paused\",\n      \"animate-spin\": parsedStatus === \"in_progress\",\n    }\n  );\n\n  const statusIcon = {\n    success: <CheckCircle />,\n    warning: (\n      <div className=\"circle-4 flex items-center justify-center border-[1.5px] border-orange-500 text-[0.5em] font-bold\">\n        !\n      </div>\n    ),\n    error: <XCircle />,\n    in_progress: <Loader />,\n    paused: <PauseCircle />,\n  };\n\n  return (\n    <div className=\"flex justify-start\">\n      <div className={iconClassName}>{statusIcon[parsedStatus]}</div>\n    </div>\n  );\n};\n\nexport default StatusIcon;\n",
+      "type": "registry:ui"
+    }
+  ],
+  "type": "registry:ui"
+}

@@ -1,0 +1,20 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "resizable-side-panel",
+  "title": "Resizable Side Panel",
+  "description": "Resizable side panel.",
+  "dependencies": [
+    "react-resizable-panels"
+  ],
+  "registryDependencies": [
+    "windmill-tokens"
+  ],
+  "files": [
+    {
+      "path": "components/ui/resizable-side-panel.tsx",
+      "content": "\"use client\";\n\n// Vendored from packages/ui/src/components/ResizableSidePanel/ResizableSidePanel.tsx. Styling verbatim; @wind/Remix/app-state deps stubbed for v0 (none required).\n\nimport type { ReactNode } from \"react\";\nimport { useEffect, useRef, useState } from \"react\";\nimport type { ImperativePanelHandle } from \"react-resizable-panels\";\nimport { Panel, PanelGroup, PanelResizeHandle } from \"react-resizable-panels\";\n\ninterface ResizableSidePanelProps {\n  open: boolean;\n  children: [ReactNode, ReactNode];\n  className?: string;\n  autoSaveId?: string;\n}\n\nexport const ResizableSidePanel = ({\n  open,\n  children,\n  className,\n  autoSaveId,\n}: ResizableSidePanelProps) => {\n  const rightPanelRef = useRef<ImperativePanelHandle>(null);\n  const [isDragging, setIsDragging] = useState(false);\n\n  const lastOpenSizeRef = useRef<number>(30);\n  const [left, right] = children;\n\n  useEffect(() => {\n    const rightPanel = rightPanelRef.current;\n    if (!rightPanel) {\n      return;\n    }\n\n    if (open) {\n      const sizeToOpen = Math.max(10, Math.min(50, lastOpenSizeRef.current));\n      rightPanel.resize(sizeToOpen);\n    } else {\n      rightPanel.resize(0);\n    }\n  }, [open]);\n\n  return (\n    <PanelGroup\n      autoSaveId={autoSaveId ?? \"ui:resizable-side-panel\"}\n      direction=\"horizontal\"\n      className={className}\n      onLayout={(sizes) => {\n        if (sizes?.[1] && sizes[1] > 0) {\n          lastOpenSizeRef.current = sizes[1];\n        }\n      }}\n    >\n      <Panel id=\"left-panel\" order={1} minSize={50} defaultSize={open ? 70 : 100}>\n        {left}\n      </Panel>\n      <PanelResizeHandle onDragging={(dragging) => setIsDragging(dragging)} />\n      <Panel\n        id=\"right-panel\"\n        order={2}\n        ref={rightPanelRef}\n        minSize={open && isDragging ? 30 : 0}\n        maxSize={50}\n        defaultSize={open ? 30 : 0}\n        style={{ transition: isDragging ? undefined : \"flex-grow 150ms ease\" }}\n      >\n        <div\n          className={\n            open ? \"pointer-events-auto h-full w-full\" : \"pointer-events-none h-full w-full\"\n          }\n        >\n          {right}\n        </div>\n      </Panel>\n    </PanelGroup>\n  );\n};\n\nexport default ResizableSidePanel;\n",
+      "type": "registry:ui"
+    }
+  ],
+  "type": "registry:ui"
+}

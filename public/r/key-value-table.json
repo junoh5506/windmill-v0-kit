@@ -1,0 +1,19 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "key-value-table",
+  "title": "Key Value Table",
+  "description": "Key / value table.",
+  "registryDependencies": [
+    "data-viewer",
+    "utils",
+    "windmill-tokens"
+  ],
+  "files": [
+    {
+      "path": "components/ui/key-value-table.tsx",
+      "content": "\"use client\";\n\n// Vendored from packages/ui/src/components/KeyValueTable. Styling verbatim; @wind/Remix deps stripped for v0.\n// NOTE: @wind/util StringUtil.formatAsReadableTitle inlined as a local helper (camel/snake/kebab -> Title Case).\n\nimport { UnknownTypeViewer } from \"@/components/ui/data-viewer\";\nimport { cn } from \"@/lib/utils\";\n\n// NOTE: inlined stand-in for @wind/util StringUtil.formatAsReadableTitle.\nconst formatAsReadableTitle = (key: string): string =>\n  key\n    .replace(/([a-z0-9])([A-Z])/g, \"$1 $2\")\n    .replace(/[_-]+/g, \" \")\n    .replace(/\\s+/g, \" \")\n    .trim()\n    .replace(/\\b\\w/g, (c) => c.toUpperCase());\n\ninterface Props {\n  className?: string;\n  // object is a key value pair\n  object: Record<string, unknown> | string | number | boolean;\n  hiddenKeys?: string[];\n  borderLess?: boolean;\n}\n\nexport const KeyValueTable = ({ className, object, hiddenKeys, borderLess }: Props) => {\n  // If not an object just return unknown type\n  if (typeof object !== \"object\") {\n    return <UnknownTypeViewer value={object} />;\n  }\n\n  const keys = Object.keys(object).filter((key) => !hiddenKeys?.includes(key));\n  const filteredKeys = keys.filter((key) => {\n    // Filter out anything where value is undefined\n    return object[key] !== undefined;\n  });\n\n  return (\n    <div\n      className={cn(className, \"overflow-hidden \", {\n        \"rounded-lg border shadow-sm\": !borderLess,\n      })}\n    >\n      <table className=\"w-full\">\n        <tbody>\n          {filteredKeys.map((key, index) => {\n            const value = object[key];\n\n            return (\n              <tr key={key}>\n                <td\n                  width={100}\n                  className={cn(\"border-b border-r bg-surface font-mono text-xs last:border-b-0\", {\n                    \"border-b-0\": index === filteredKeys.length - 1,\n                  })}\n                >\n                  <div className=\"px-3 py-2 text-secondary\">{formatAsReadableTitle(key)}</div>\n                </td>\n                <td\n                  width={150}\n                  className={cn(\"border-b bg-surface-muted\", {\n                    \"border-b-0 \": index === filteredKeys.length - 1,\n                  })}\n                >\n                  <div className=\"break-all px-3 py-2 text-xs\">\n                    <UnknownTypeViewer value={value} />\n                  </div>\n                </td>\n              </tr>\n            );\n          })}\n        </tbody>\n      </table>\n    </div>\n  );\n};\n\nexport default KeyValueTable;\n",
+      "type": "registry:ui"
+    }
+  ],
+  "type": "registry:ui"
+}

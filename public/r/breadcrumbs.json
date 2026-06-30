@@ -1,0 +1,23 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "breadcrumbs",
+  "title": "Breadcrumbs",
+  "description": "Breadcrumb trail.",
+  "dependencies": [
+    "lucide-react"
+  ],
+  "registryDependencies": [
+    "link",
+    "typography",
+    "utils",
+    "windmill-tokens"
+  ],
+  "files": [
+    {
+      "path": "components/ui/breadcrumbs.tsx",
+      "content": "\"use client\";\n\n// Vendored from packages/ui/src/components/Breadcrumbs. Styling verbatim; Remix/workspace deps stripped for v0.\n\nimport { Link } from \"@/components/ui/link\";\nimport { Label } from \"@/components/ui/typography\";\nimport { cn } from \"@/lib/utils\";\nimport { ChevronRight } from \"lucide-react\";\n\nexport interface BreadcrumbItem {\n  to?: string;\n  label: string;\n}\n\ninterface Props {\n  className?: string;\n  crumbs: BreadcrumbItem[];\n}\n\n// NOTE: BreadcrumbList rendering kept verbatim. The Breadcrumbs wrapper that\n// derived crumbs from the Remix useCurrentPath() route is dropped — pass crumbs\n// directly for v0.\nexport const BreadcrumbList = ({ crumbs, className }: Props) => {\n  return (\n    <div className={cn(className, \"flex gap-1\")}>\n      {crumbs.map((b) => {\n        if (b.to) {\n          return (\n            <div className=\"flex items-center justify-center gap-1\" key={b.to}>\n              <Link to={b.to} key={b.to} className=\"underline opacity-70 hover:opacity-100\">\n                <Label intent=\"secondary\">{b.label}</Label>\n              </Link>\n              <div className=\"flex items-center justify-center text-body-sm opacity-50\">\n                <ChevronRight className=\"h-3 w-3\" />\n              </div>\n            </div>\n          );\n        } else {\n          return (\n            <Label key={b.label} intent=\"secondary\" className=\"tracking-tight\">\n              {b.label}\n            </Label>\n          );\n        }\n      })}\n    </div>\n  );\n};\n\nexport default BreadcrumbList;\n",
+      "type": "registry:ui"
+    }
+  ],
+  "type": "registry:ui"
+}

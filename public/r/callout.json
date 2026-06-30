@@ -1,0 +1,23 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "callout",
+  "title": "Callout",
+  "description": "Inline callout / alert.",
+  "dependencies": [
+    "class-variance-authority",
+    "lucide-react"
+  ],
+  "registryDependencies": [
+    "button",
+    "utils",
+    "windmill-tokens"
+  ],
+  "files": [
+    {
+      "path": "components/ui/callout.tsx",
+      "content": "\"use client\";\n\n// Vendored from packages/ui/src/components/Callout/Callout.tsx. Styling verbatim; Remix/workspace deps stripped for v0.\n\nimport { Button } from \"@/components/ui/button\";\nimport { cn } from \"@/lib/utils\";\nimport { cva, type VariantProps } from \"class-variance-authority\";\nimport { CheckIcon, CircleXIcon, InfoIcon, TriangleAlertIcon } from \"lucide-react\";\nimport type { ComponentProps, ReactNode } from \"react\";\n\n// NOTE: Typography Label/Paragraph inlined (token classes preserved verbatim).\nconst Label = ({ children, className }: { children: ReactNode; className?: string }) => (\n  <div className={cn(\"text-primary text-body-sm font-medium\", className)}>{children}</div>\n);\n\nconst Paragraph = ({ children, className }: { children: ReactNode; className?: string }) => (\n  <div className={cn(\"text-body-sm text-secondary font-normal\", className)}>{children}</div>\n);\n\ninterface Props extends VariantProps<typeof CalloutStyles> {\n  className?: string;\n  description?: ReactNode;\n  cta?: ComponentProps<typeof Button>;\n  secondaryCta?: ComponentProps<typeof Button>;\n  tertiaryCta?: ComponentProps<typeof Button>;\n  title?: ReactNode;\n  icon?: ReactNode;\n  size?: \"default\" | \"sm\";\n}\n\nconst CalloutStyles = cva(\n  \"flex-col @md/callout:flex-row flex @md/callout:items-start gap-4 px-4 py-3 rounded-lg ring-1\",\n  {\n    variants: {\n      intent: {\n        info: \"ring-accent/10 ring-inset bg-surface-muted/50\",\n        success: \"bg-green ring-green/10 ring-inset\",\n        error: \"bg-red ring-red/10 ring-inset\",\n        warning: \"bg-yellow ring-yellow/10 ring-inset\",\n      },\n    },\n    defaultVariants: {\n      intent: \"info\",\n    },\n  }\n);\n\nconst CalloutIconStyles = cva(\"flex-none mt-[3px]\", {\n  variants: {\n    intent: {\n      info: \"text-tertiary\",\n      success: \"text-green\",\n      error: \"text-red\",\n      warning: \"text-yellow\",\n    },\n  },\n  defaultVariants: {\n    intent: \"info\",\n  },\n});\n\nconst Callout = ({\n  className,\n  description,\n  cta,\n  secondaryCta,\n  tertiaryCta,\n  title,\n  icon,\n  size = \"default\",\n  ...cvaProps\n}: Props) => {\n  const { intent = \"info\" } = cvaProps;\n\n  const IconNode = (\n    <div className={CalloutIconStyles(cvaProps)}>\n      {icon}\n      {!icon && (\n        <>\n          {intent === \"info\" && <InfoIcon />}\n          {intent === \"warning\" && <TriangleAlertIcon />}\n          {intent === \"error\" && <CircleXIcon />}\n          {intent === \"success\" && <CheckIcon />}\n        </>\n      )}\n    </div>\n  );\n\n  return (\n    <div className=\"@container/callout\">\n      <div className={cn(CalloutStyles(cvaProps), className)}>\n        {IconNode}\n        <div className=\"flex flex-grow flex-col\">\n          {title && <Label>{title}</Label>}\n          {description && (\n            <Paragraph\n              className={cn({\n                \"mt-1\": Boolean(title),\n              })}\n            >\n              {description}\n            </Paragraph>\n          )}\n          {(cta || secondaryCta || tertiaryCta) && (\n            <div className=\"@md/callout:flex-row mt-2 flex flex-col gap-2\">\n              {cta && <Button size=\"sm\" {...cta} />}\n              {secondaryCta && (\n                <Button\n                  className=\"hover:underline hover:underline-offset-4\"\n                  intent=\"link\"\n                  size=\"sm\"\n                  {...secondaryCta}\n                />\n              )}\n              {tertiaryCta && (\n                <Button\n                  className=\"hover:underline hover:underline-offset-4\"\n                  intent=\"link\"\n                  size=\"sm\"\n                  {...tertiaryCta}\n                />\n              )}\n            </div>\n          )}\n        </div>\n      </div>\n    </div>\n  );\n};\n\nexport default Callout;\n",
+      "type": "registry:ui"
+    }
+  ],
+  "type": "registry:ui"
+}

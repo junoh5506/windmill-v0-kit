@@ -1,0 +1,21 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "diff-view",
+  "title": "Diff View",
+  "description": "Text diff viewer (diff-match-patch).",
+  "dependencies": [
+    "diff-match-patch"
+  ],
+  "registryDependencies": [
+    "utils",
+    "windmill-tokens"
+  ],
+  "files": [
+    {
+      "path": "components/ui/diff-view.tsx",
+      "content": "\"use client\";\n\n// Vendored from packages/ui/src/components/DiffView. Styling verbatim; @wind/Remix deps stripped for v0.\n// Keeps the diff-match-patch engine intact (DiffUtil inlined from DiffUtil.ts).\n\nimport { cn } from \"@/lib/utils\";\nimport DiffMatchPatch from \"diff-match-patch\";\nimport { useMemo } from \"react\";\n\nexport enum DiffType {\n  EQUAL = \"EQUAL\",\n  INSERT = \"INSERT\",\n  DELETE = \"DELETE\",\n}\n\nexport interface DiffSegment {\n  type: DiffType;\n  text: string;\n}\n\n/**\n * Computes word-level diffs between two texts using diff-match-patch.\n *\n * Runs diff_main on raw text, then diff_cleanupSemantic to group\n * changes at word boundaries for readable output.\n *\n * @author adit-windmill\n */\nclass DiffUtil {\n  static computeDiff(oldText: string, newText: string): DiffSegment[] {\n    const dmp = new DiffMatchPatch();\n    const diffs = dmp.diff_main(oldText, newText);\n\n    dmp.diff_cleanupSemantic(diffs);\n\n    return diffs.map(([operation, text]) => ({\n      type: DiffUtil.resolveType(operation),\n      text,\n    }));\n  }\n\n  private static resolveType(operation: number): DiffType {\n    if (operation === DiffMatchPatch.DIFF_INSERT) {\n      return DiffType.INSERT;\n    }\n\n    if (operation === DiffMatchPatch.DIFF_DELETE) {\n      return DiffType.DELETE;\n    }\n\n    return DiffType.EQUAL;\n  }\n}\n\nexport interface DiffViewProps {\n  oldText: string;\n  newText: string;\n  className?: string;\n}\n\nconst SEGMENT_STYLES: Record<DiffType, string> = {\n  [DiffType.EQUAL]: \"\",\n  [DiffType.INSERT]: \"bg-green text-green font-medium rounded-sm px-0.5\",\n  [DiffType.DELETE]: \"bg-red text-red line-through rounded-sm px-0.5 opacity-70\",\n};\n\n/**\n * Renders inline word-level diffs between two texts.\n *\n * Changed words are highlighted in-place: green for insertions,\n * red strikethrough for deletions.\n *\n * @author adit-windmill\n */\nconst DiffView = ({ oldText, newText, className }: DiffViewProps) => {\n  const segments = useMemo(() => DiffUtil.computeDiff(oldText, newText), [oldText, newText]);\n\n  return (\n    <div\n      className={cn(\"whitespace-pre-wrap rounded-lg border p-4 text-sm leading-relaxed\", className)}\n    >\n      {segments.map((segment, i) => (\n        <span key={i} className={SEGMENT_STYLES[segment.type]}>\n          {segment.text}\n        </span>\n      ))}\n    </div>\n  );\n};\n\nexport default DiffView;\n",
+      "type": "registry:ui"
+    }
+  ],
+  "type": "registry:ui"
+}

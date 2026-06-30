@@ -1,0 +1,24 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "date-picker",
+  "title": "Date Picker",
+  "description": "Single date picker.",
+  "dependencies": [
+    "@radix-ui/react-icons",
+    "luxon"
+  ],
+  "registryDependencies": [
+    "calendar",
+    "popover",
+    "utils",
+    "windmill-tokens"
+  ],
+  "files": [
+    {
+      "path": "components/ui/date-picker.tsx",
+      "content": "\"use client\";\n// Vendored from packages/ui/src/components/DatePicker/DatePicker.tsx. Styling verbatim; Remix/workspace deps stripped for v0.\n// useTimezone (@wind) dropped — tz defaults to \"UTC\"; ShadButton outline trigger inlined as a styled <button>.\n\nimport Calendar from \"@/components/ui/calendar\";\nimport { Popover, PopoverContent, PopoverTrigger } from \"@/components/ui/popover\";\nimport { cn } from \"@/lib/utils\";\nimport { ChevronDownIcon } from \"@radix-ui/react-icons\";\nimport { DateTime } from \"luxon\";\nimport { useMemo, useState } from \"react\";\n\ninterface Props {\n  value: string | undefined;\n  onChange: (date: string | undefined) => void;\n  fromDate?: DateTime;\n  toDate?: DateTime;\n  tz?: string;\n}\n\nfunction toCalendarDate(dt: DateTime | undefined): Date | undefined {\n  if (!dt) {\n    return undefined;\n  }\n\n  return dt.setZone(\"local\", { keepLocalTime: true }).toJSDate();\n}\n\nfunction fromCalendarDate(date: Date, targetZone: string): DateTime {\n  return DateTime.fromJSDate(date).setZone(targetZone, { keepLocalTime: true });\n}\n\nconst DatePicker = ({ value, onChange, fromDate, toDate, tz }: Props) => {\n  const [open, setOpen] = useState(false);\n  const effectiveTz = tz ?? \"UTC\";\n\n  const parsedDate = useMemo(\n    () => (value ? DateTime.fromFormat(value, \"yyyy-MM-dd\", { zone: effectiveTz }) : undefined),\n    [value, effectiveTz]\n  );\n\n  return (\n    <Popover open={open} onOpenChange={setOpen}>\n      <PopoverTrigger asChild>\n        <button\n          type=\"button\"\n          id=\"date\"\n          className={cn(\n            \"inline-flex items-center justify-between whitespace-nowrap rounded-md text-ui font-normal transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50\",\n            \"border border-input bg-background shadow-sm hover:bg-surface-muted hover:text-accent-foreground\",\n            \"h-9 px-4 py-2 w-48\"\n          )}\n        >\n          {parsedDate?.toLocaleString(DateTime.DATE_MED) ?? \"Select date\"}\n          <ChevronDownIcon />\n        </button>\n      </PopoverTrigger>\n      <PopoverContent className=\"w-auto p-0\">\n        <Calendar\n          fromDate={toCalendarDate(fromDate)}\n          toDate={toCalendarDate(toDate)}\n          mode=\"single\"\n          selected={toCalendarDate(parsedDate)}\n          onSelect={(date) => {\n            if (date) {\n              onChange(fromCalendarDate(date, effectiveTz).toFormat(\"yyyy-MM-dd\"));\n            } else {\n              onChange(undefined);\n            }\n            setOpen(false);\n          }}\n        />\n      </PopoverContent>\n    </Popover>\n  );\n};\n\nexport default DatePicker;\n",
+      "type": "registry:ui"
+    }
+  ],
+  "type": "registry:ui"
+}

@@ -1,0 +1,1604 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry.json",
+  "name": "windmill",
+  "homepage": "https://github.com/gowindmill/go-windmill",
+  "items": [
+    {
+      "name": "utils",
+      "type": "registry:lib",
+      "title": "cn() utility",
+      "description": "clsx + extended tailwind-merge, aware of Windmill's custom font sizes and token colors.",
+      "dependencies": [
+        "clsx",
+        "tailwind-merge"
+      ],
+      "files": [
+        {
+          "path": "lib/utils.ts",
+          "type": "registry:lib"
+        }
+      ]
+    },
+    {
+      "name": "windmill-tokens",
+      "type": "registry:style",
+      "title": "Windmill tokens",
+      "description": "Design tokens resolved from WINDMILL_LIGHT_THEME_V3 plus the Tailwind config. Install once as the base style.",
+      "registryDependencies": [
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "app/globals.css",
+          "type": "registry:file",
+          "target": "app/globals.css"
+        },
+        {
+          "path": "tailwind.config.ts",
+          "type": "registry:file",
+          "target": "tailwind.config.ts"
+        }
+      ]
+    },
+    {
+      "name": "announcement",
+      "type": "registry:ui",
+      "title": "Announcement",
+      "files": [
+        {
+          "path": "components/ui/announcement.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "description": "Announcement card.",
+      "dependencies": [
+        "class-variance-authority",
+        "lucide-react"
+      ],
+      "registryDependencies": [
+        "button",
+        "stack",
+        "utils",
+        "windmill-tokens"
+      ]
+    },
+    {
+      "name": "auto-height-transition",
+      "type": "registry:ui",
+      "title": "Auto Height Transition",
+      "files": [
+        {
+          "path": "components/ui/auto-height-transition.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "description": "Animated height auto-transition.",
+      "registryDependencies": [
+        "windmill-tokens"
+      ]
+    },
+    {
+      "name": "avatar",
+      "type": "registry:ui",
+      "title": "Avatar",
+      "files": [
+        {
+          "path": "components/ui/avatar.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "description": "Initials / image avatar.",
+      "registryDependencies": [
+        "utils",
+        "windmill-tokens"
+      ]
+    },
+    {
+      "name": "badge",
+      "type": "registry:ui",
+      "title": "Badge",
+      "files": [
+        {
+          "path": "components/ui/badge.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "description": "Tag, Tags, and Chip status labels.",
+      "dependencies": [
+        "class-variance-authority",
+        "lucide-react"
+      ],
+      "registryDependencies": [
+        "utils",
+        "windmill-tokens"
+      ]
+    },
+    {
+      "name": "banner",
+      "type": "registry:ui",
+      "title": "Banner",
+      "files": [
+        {
+          "path": "components/ui/banner.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "description": "Full-width banner.",
+      "dependencies": [
+        "class-variance-authority",
+        "lucide-react"
+      ],
+      "registryDependencies": [
+        "button",
+        "utils",
+        "windmill-tokens"
+      ]
+    },
+    {
+      "name": "breadcrumbs",
+      "type": "registry:ui",
+      "title": "Breadcrumbs",
+      "files": [
+        {
+          "path": "components/ui/breadcrumbs.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "description": "Breadcrumb trail.",
+      "dependencies": [
+        "lucide-react"
+      ],
+      "registryDependencies": [
+        "link",
+        "typography",
+        "utils",
+        "windmill-tokens"
+      ]
+    },
+    {
+      "name": "button",
+      "type": "registry:ui",
+      "title": "Button",
+      "files": [
+        {
+          "path": "components/ui/button.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "description": "Primary action button (intent + size variants).",
+      "dependencies": [
+        "class-variance-authority",
+        "lucide-react"
+      ],
+      "registryDependencies": [
+        "utils",
+        "windmill-tokens"
+      ]
+    },
+    {
+      "name": "calendar",
+      "type": "registry:ui",
+      "title": "Calendar",
+      "files": [
+        {
+          "path": "components/ui/calendar.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "description": "Date calendar (react-day-picker).",
+      "dependencies": [
+        "class-variance-authority",
+        "lucide-react",
+        "luxon",
+        "react-day-picker"
+      ],
+      "registryDependencies": [
+        "dropdown-menu",
+        "utils",
+        "windmill-tokens"
+      ]
+    },
+    {
+      "name": "callout",
+      "type": "registry:ui",
+      "title": "Callout",
+      "files": [
+        {
+          "path": "components/ui/callout.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "description": "Inline callout / alert.",
+      "dependencies": [
+        "class-variance-authority",
+        "lucide-react"
+      ],
+      "registryDependencies": [
+        "button",
+        "utils",
+        "windmill-tokens"
+      ]
+    },
+    {
+      "name": "card",
+      "type": "registry:ui",
+      "title": "Card",
+      "files": [
+        {
+          "path": "components/ui/card.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "description": "Surface container with Header / Body / Footer.",
+      "dependencies": [
+        "lucide-react"
+      ],
+      "registryDependencies": [
+        "utils",
+        "windmill-tokens"
+      ]
+    },
+    {
+      "name": "charts",
+      "type": "registry:ui",
+      "title": "Charts",
+      "files": [
+        {
+          "path": "components/ui/charts.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "description": "Bar / line / gauge charts (recharts) + chart color tokens.",
+      "dependencies": [
+        "lucide-react",
+        "luxon",
+        "recharts"
+      ],
+      "registryDependencies": [
+        "stack",
+        "typography",
+        "utils",
+        "windmill-tokens"
+      ]
+    },
+    {
+      "name": "chat",
+      "type": "registry:ui",
+      "title": "Chat",
+      "files": [
+        {
+          "path": "components/ui/chat.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "description": "Chat message list + streaming markdown.",
+      "dependencies": [
+        "framer-motion",
+        "lucide-react",
+        "rehype-raw",
+        "remark-breaks",
+        "remark-gfm",
+        "streamdown"
+      ],
+      "registryDependencies": [
+        "button",
+        "sheet",
+        "stack",
+        "typography",
+        "utils",
+        "windmill-tokens"
+      ]
+    },
+    {
+      "name": "checkbox-group",
+      "type": "registry:ui",
+      "title": "Checkbox Group",
+      "files": [
+        {
+          "path": "components/ui/checkbox-group.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "description": "Group of checkboxes.",
+      "registryDependencies": [
+        "checkbox",
+        "stack",
+        "utils",
+        "windmill-tokens"
+      ]
+    },
+    {
+      "name": "checkbox-with-label",
+      "type": "registry:ui",
+      "title": "Checkbox With Label",
+      "files": [
+        {
+          "path": "components/ui/checkbox-with-label.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "description": "Checkbox with label + description.",
+      "registryDependencies": [
+        "checkbox",
+        "stack",
+        "utils",
+        "windmill-tokens"
+      ]
+    },
+    {
+      "name": "checkbox",
+      "type": "registry:ui",
+      "title": "Checkbox",
+      "files": [
+        {
+          "path": "components/ui/checkbox.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "description": "Checkbox control.",
+      "registryDependencies": [
+        "windmill-tokens"
+      ]
+    },
+    {
+      "name": "checklist",
+      "type": "registry:ui",
+      "title": "Checklist",
+      "files": [
+        {
+          "path": "components/ui/checklist.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "description": "Checklist with completion state.",
+      "dependencies": [
+        "lucide-react"
+      ],
+      "registryDependencies": [
+        "typography",
+        "utils",
+        "windmill-tokens"
+      ]
+    },
+    {
+      "name": "column-chart",
+      "type": "registry:ui",
+      "title": "Column Chart",
+      "files": [
+        {
+          "path": "components/ui/column-chart.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "description": "Column / bar chart.",
+      "dependencies": [
+        "class-variance-authority",
+        "recharts"
+      ],
+      "registryDependencies": [
+        "typography",
+        "utils",
+        "windmill-tokens"
+      ]
+    },
+    {
+      "name": "combobox",
+      "type": "registry:ui",
+      "title": "Combobox",
+      "files": [
+        {
+          "path": "components/ui/combobox.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "description": "Searchable select.",
+      "dependencies": [
+        "@radix-ui/react-icons",
+        "cmdk",
+        "lucide-react",
+        "minisearch"
+      ],
+      "registryDependencies": [
+        "command",
+        "popover",
+        "stack",
+        "utils",
+        "windmill-tokens"
+      ]
+    },
+    {
+      "name": "command-palette",
+      "type": "registry:ui",
+      "title": "Command Palette",
+      "files": [
+        {
+          "path": "components/ui/command-palette.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "description": "Headless command palette (⌘K).",
+      "dependencies": [
+        "@headlessui/react",
+        "lucide-react"
+      ],
+      "registryDependencies": [
+        "utils",
+        "windmill-tokens"
+      ]
+    },
+    {
+      "name": "command",
+      "type": "registry:ui",
+      "title": "Command",
+      "files": [
+        {
+          "path": "components/ui/command.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "description": "Command palette (cmdk).",
+      "dependencies": [
+        "@radix-ui/react-dialog",
+        "cmdk",
+        "lucide-react"
+      ],
+      "registryDependencies": [
+        "dialog",
+        "utils",
+        "windmill-tokens"
+      ]
+    },
+    {
+      "name": "component-label-wrapper",
+      "type": "registry:ui",
+      "title": "Component Label Wrapper",
+      "files": [
+        {
+          "path": "components/ui/component-label-wrapper.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "description": "Form field label + error wrapper.",
+      "registryDependencies": [
+        "utils",
+        "windmill-tokens"
+      ]
+    },
+    {
+      "name": "composed-chart",
+      "type": "registry:ui",
+      "title": "Composed Chart",
+      "files": [
+        {
+          "path": "components/ui/composed-chart.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "description": "Composed bar + line + area chart.",
+      "dependencies": [
+        "lucide-react",
+        "recharts"
+      ],
+      "registryDependencies": [
+        "charts",
+        "stack",
+        "typography",
+        "utils",
+        "windmill-tokens"
+      ]
+    },
+    {
+      "name": "containers",
+      "type": "registry:ui",
+      "title": "Containers",
+      "files": [
+        {
+          "path": "components/ui/containers.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "description": "Max-width + expandable containers.",
+      "dependencies": [
+        "class-variance-authority",
+        "lucide-react"
+      ],
+      "registryDependencies": [
+        "utils",
+        "windmill-tokens"
+      ]
+    },
+    {
+      "name": "copy-to-clipboard",
+      "type": "registry:ui",
+      "title": "Copy To Clipboard",
+      "files": [
+        {
+          "path": "components/ui/copy-to-clipboard.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "description": "Copy-to-clipboard button.",
+      "dependencies": [
+        "lucide-react"
+      ],
+      "registryDependencies": [
+        "utils",
+        "windmill-tokens"
+      ]
+    },
+    {
+      "name": "data-viewer",
+      "type": "registry:ui",
+      "title": "Data Viewer",
+      "files": [
+        {
+          "path": "components/ui/data-viewer.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "description": "JSON / text data viewer.",
+      "dependencies": [
+        "lucide-react",
+        "react-json-tree"
+      ],
+      "registryDependencies": [
+        "tooltip",
+        "utils",
+        "windmill-tokens"
+      ]
+    },
+    {
+      "name": "date-picker",
+      "type": "registry:ui",
+      "title": "Date Picker",
+      "files": [
+        {
+          "path": "components/ui/date-picker.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "description": "Single date picker.",
+      "dependencies": [
+        "@radix-ui/react-icons",
+        "luxon"
+      ],
+      "registryDependencies": [
+        "calendar",
+        "popover",
+        "utils",
+        "windmill-tokens"
+      ]
+    },
+    {
+      "name": "date-range-picker",
+      "type": "registry:ui",
+      "title": "Date Range Picker",
+      "files": [
+        {
+          "path": "components/ui/date-range-picker.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "description": "Date range picker with quick ranges.",
+      "dependencies": [
+        "@radix-ui/react-icons",
+        "lucide-react",
+        "luxon"
+      ],
+      "registryDependencies": [
+        "calendar",
+        "popover",
+        "stack",
+        "utils",
+        "windmill-tokens"
+      ]
+    },
+    {
+      "name": "dialog",
+      "type": "registry:ui",
+      "title": "Dialog",
+      "files": [
+        {
+          "path": "components/ui/dialog.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "description": "Modal dialog (Radix).",
+      "dependencies": [
+        "@radix-ui/react-dialog"
+      ],
+      "registryDependencies": [
+        "utils",
+        "windmill-tokens"
+      ]
+    },
+    {
+      "name": "diff-view",
+      "type": "registry:ui",
+      "title": "Diff View",
+      "files": [
+        {
+          "path": "components/ui/diff-view.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "description": "Text diff viewer (diff-match-patch).",
+      "dependencies": [
+        "diff-match-patch"
+      ],
+      "registryDependencies": [
+        "utils",
+        "windmill-tokens"
+      ]
+    },
+    {
+      "name": "divider",
+      "type": "registry:ui",
+      "title": "Divider",
+      "files": [
+        {
+          "path": "components/ui/divider.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "description": "Horizontal / vertical divider.",
+      "dependencies": [
+        "class-variance-authority"
+      ],
+      "registryDependencies": [
+        "utils",
+        "windmill-tokens"
+      ]
+    },
+    {
+      "name": "dropdown-menu",
+      "type": "registry:ui",
+      "title": "Dropdown Menu",
+      "files": [
+        {
+          "path": "components/ui/dropdown-menu.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "description": "Dropdown menu (Radix).",
+      "dependencies": [
+        "@radix-ui/react-dropdown-menu",
+        "lucide-react"
+      ],
+      "registryDependencies": [
+        "utils",
+        "windmill-tokens"
+      ]
+    },
+    {
+      "name": "empty-state",
+      "type": "registry:ui",
+      "title": "Empty State",
+      "files": [
+        {
+          "path": "components/ui/empty-state.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "description": "Empty / zero-data state.",
+      "dependencies": [
+        "lucide-react"
+      ],
+      "registryDependencies": [
+        "button",
+        "spinner",
+        "stack",
+        "utils",
+        "windmill-tokens"
+      ]
+    },
+    {
+      "name": "fade-up-with-delay",
+      "type": "registry:ui",
+      "title": "Fade Up With Delay",
+      "files": [
+        {
+          "path": "components/ui/fade-up-with-delay.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "description": "Staggered fade-up entrance.",
+      "dependencies": [
+        "framer-motion"
+      ],
+      "registryDependencies": [
+        "windmill-tokens"
+      ]
+    },
+    {
+      "name": "filter",
+      "type": "registry:ui",
+      "title": "Filter",
+      "files": [
+        {
+          "path": "components/ui/filter.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "description": "Debounced filter search bar.",
+      "dependencies": [
+        "lucide-react"
+      ],
+      "registryDependencies": [
+        "utils",
+        "windmill-tokens"
+      ]
+    },
+    {
+      "name": "flexible-spacer",
+      "type": "registry:ui",
+      "title": "Flexible Spacer",
+      "files": [
+        {
+          "path": "components/ui/flexible-spacer.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "description": "Flex spacer.",
+      "registryDependencies": [
+        "utils",
+        "windmill-tokens"
+      ]
+    },
+    {
+      "name": "gradient-background",
+      "type": "registry:ui",
+      "title": "Gradient Background",
+      "files": [
+        {
+          "path": "components/ui/gradient-background.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "description": "Animated gradient backdrop.",
+      "registryDependencies": [
+        "utils",
+        "windmill-tokens"
+      ]
+    },
+    {
+      "name": "grid",
+      "type": "registry:ui",
+      "title": "Grid",
+      "files": [
+        {
+          "path": "components/ui/grid.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "description": "Responsive grid layout.",
+      "dependencies": [
+        "class-variance-authority"
+      ],
+      "registryDependencies": [
+        "utils",
+        "windmill-tokens"
+      ]
+    },
+    {
+      "name": "help-banner",
+      "type": "registry:ui",
+      "title": "Help Banner",
+      "files": [
+        {
+          "path": "components/ui/help-banner.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "description": "Gradient help banner.",
+      "dependencies": [
+        "class-variance-authority",
+        "lucide-react"
+      ],
+      "registryDependencies": [
+        "button",
+        "utils",
+        "windmill-tokens"
+      ]
+    },
+    {
+      "name": "hero-numbers",
+      "type": "registry:ui",
+      "title": "Hero Numbers",
+      "files": [
+        {
+          "path": "components/ui/hero-numbers.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "description": "Large hero stat numbers.",
+      "dependencies": [
+        "lucide-react"
+      ],
+      "registryDependencies": [
+        "stack",
+        "tooltip",
+        "typography",
+        "utils",
+        "windmill-tokens"
+      ]
+    },
+    {
+      "name": "hover-card",
+      "type": "registry:ui",
+      "title": "Hover Card",
+      "files": [
+        {
+          "path": "components/ui/hover-card.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "description": "Hover card (Radix).",
+      "dependencies": [
+        "@radix-ui/react-hover-card"
+      ],
+      "registryDependencies": [
+        "utils",
+        "windmill-tokens"
+      ]
+    },
+    {
+      "name": "input",
+      "type": "registry:ui",
+      "title": "Input",
+      "files": [
+        {
+          "path": "components/ui/input.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "description": "Text input.",
+      "registryDependencies": [
+        "utils",
+        "windmill-tokens"
+      ]
+    },
+    {
+      "name": "key-value-table",
+      "type": "registry:ui",
+      "title": "Key Value Table",
+      "files": [
+        {
+          "path": "components/ui/key-value-table.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "description": "Key / value table.",
+      "registryDependencies": [
+        "data-viewer",
+        "utils",
+        "windmill-tokens"
+      ]
+    },
+    {
+      "name": "keyboard",
+      "type": "registry:ui",
+      "title": "Keyboard",
+      "files": [
+        {
+          "path": "components/ui/keyboard.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "description": "Keyboard shortcut hint.",
+      "dependencies": [
+        "lucide-react"
+      ],
+      "registryDependencies": [
+        "utils",
+        "windmill-tokens"
+      ]
+    },
+    {
+      "name": "left-nav",
+      "type": "registry:ui",
+      "title": "Left Nav",
+      "files": [
+        {
+          "path": "components/ui/left-nav.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "description": "Left navigation with sections + links.",
+      "dependencies": [
+        "@headlessui/react",
+        "lucide-react"
+      ],
+      "registryDependencies": [
+        "typography",
+        "utils",
+        "windmill-tokens"
+      ]
+    },
+    {
+      "name": "link",
+      "type": "registry:ui",
+      "title": "Link",
+      "files": [
+        {
+          "path": "components/ui/link.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "description": "Styled anchor link.",
+      "registryDependencies": [
+        "utils",
+        "windmill-tokens"
+      ]
+    },
+    {
+      "name": "markdown-text-area",
+      "type": "registry:ui",
+      "title": "Markdown Text Area",
+      "files": [
+        {
+          "path": "components/ui/markdown-text-area.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "description": "Markdown editor (MDXEditor).",
+      "dependencies": [
+        "@mdxeditor/editor",
+        "@radix-ui/react-popover"
+      ],
+      "registryDependencies": [
+        "utils",
+        "windmill-tokens"
+      ]
+    },
+    {
+      "name": "marquee",
+      "type": "registry:ui",
+      "title": "Marquee",
+      "files": [
+        {
+          "path": "components/ui/marquee.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "description": "Infinite scrolling marquee.",
+      "registryDependencies": [
+        "utils",
+        "windmill-tokens"
+      ]
+    },
+    {
+      "name": "navigation-loading-spinner",
+      "type": "registry:ui",
+      "title": "Navigation Loading Spinner",
+      "files": [
+        {
+          "path": "components/ui/navigation-loading-spinner.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "description": "Top navigation loading spinner.",
+      "registryDependencies": [
+        "spinner",
+        "utils",
+        "windmill-tokens"
+      ]
+    },
+    {
+      "name": "page",
+      "type": "registry:ui",
+      "title": "Page",
+      "files": [
+        {
+          "path": "components/ui/page.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "description": "Page shell with title, CTAs, breadcrumbs.",
+      "dependencies": [
+        "class-variance-authority"
+      ],
+      "registryDependencies": [
+        "utils",
+        "windmill-tokens"
+      ]
+    },
+    {
+      "name": "panel",
+      "type": "registry:ui",
+      "title": "Panel",
+      "files": [
+        {
+          "path": "components/ui/panel.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "description": "Resizable panel group.",
+      "dependencies": [
+        "react-resizable-panels"
+      ],
+      "registryDependencies": [
+        "stack",
+        "windmill-tokens"
+      ]
+    },
+    {
+      "name": "popover",
+      "type": "registry:ui",
+      "title": "Popover",
+      "files": [
+        {
+          "path": "components/ui/popover.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "description": "Popover (Radix).",
+      "dependencies": [
+        "@radix-ui/react-popover"
+      ],
+      "registryDependencies": [
+        "utils",
+        "windmill-tokens"
+      ]
+    },
+    {
+      "name": "progress",
+      "type": "registry:ui",
+      "title": "Progress",
+      "files": [
+        {
+          "path": "components/ui/progress.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "description": "Progress bar (linear, radial, timed).",
+      "dependencies": [
+        "@radix-ui/react-progress"
+      ],
+      "registryDependencies": [
+        "utils",
+        "windmill-tokens"
+      ]
+    },
+    {
+      "name": "radio-group",
+      "type": "registry:ui",
+      "title": "Radio Group",
+      "files": [
+        {
+          "path": "components/ui/radio-group.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "description": "Radio button group.",
+      "dependencies": [
+        "@headlessui/react",
+        "lucide-react"
+      ],
+      "registryDependencies": [
+        "utils",
+        "windmill-tokens"
+      ]
+    },
+    {
+      "name": "resizable-side-panel",
+      "type": "registry:ui",
+      "title": "Resizable Side Panel",
+      "files": [
+        {
+          "path": "components/ui/resizable-side-panel.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "description": "Resizable side panel.",
+      "dependencies": [
+        "react-resizable-panels"
+      ],
+      "registryDependencies": [
+        "windmill-tokens"
+      ]
+    },
+    {
+      "name": "roulette-transition",
+      "type": "registry:ui",
+      "title": "Roulette Transition",
+      "files": [
+        {
+          "path": "components/ui/roulette-transition.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "description": "Cycling roulette number/text animation.",
+      "dependencies": [
+        "framer-motion"
+      ],
+      "registryDependencies": [
+        "windmill-tokens"
+      ]
+    },
+    {
+      "name": "scroll-area",
+      "type": "registry:ui",
+      "title": "Scroll Area",
+      "files": [
+        {
+          "path": "components/ui/scroll-area.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "description": "Scroll area (Radix).",
+      "dependencies": [
+        "@radix-ui/react-scroll-area"
+      ],
+      "registryDependencies": [
+        "utils",
+        "windmill-tokens"
+      ]
+    },
+    {
+      "name": "section",
+      "type": "registry:ui",
+      "title": "Section",
+      "files": [
+        {
+          "path": "components/ui/section.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "description": "Collapsible titled section.",
+      "dependencies": [
+        "lucide-react"
+      ],
+      "registryDependencies": [
+        "button",
+        "utils",
+        "windmill-tokens"
+      ]
+    },
+    {
+      "name": "segmented-control",
+      "type": "registry:ui",
+      "title": "Segmented Control",
+      "files": [
+        {
+          "path": "components/ui/segmented-control.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "description": "Segmented multi-option control.",
+      "dependencies": [
+        "@radix-ui/react-toggle-group",
+        "class-variance-authority"
+      ],
+      "registryDependencies": [
+        "utils",
+        "windmill-tokens"
+      ]
+    },
+    {
+      "name": "settings",
+      "type": "registry:ui",
+      "title": "Settings",
+      "files": [
+        {
+          "path": "components/ui/settings.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "description": "Settings container / sections / rows.",
+      "registryDependencies": [
+        "auto-height-transition",
+        "button",
+        "link",
+        "stack",
+        "typography",
+        "utils",
+        "windmill-tokens"
+      ]
+    },
+    {
+      "name": "sheet-contents",
+      "type": "registry:ui",
+      "title": "Sheet Contents",
+      "files": [
+        {
+          "path": "components/ui/sheet-contents.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "description": "Sheet content scaffolding (header, sections, tabs).",
+      "dependencies": [
+        "class-variance-authority",
+        "lucide-react"
+      ],
+      "registryDependencies": [
+        "flexible-spacer",
+        "stack",
+        "tabs",
+        "typography",
+        "utils",
+        "windmill-tokens"
+      ]
+    },
+    {
+      "name": "sheet",
+      "type": "registry:ui",
+      "title": "Sheet",
+      "files": [
+        {
+          "path": "components/ui/sheet.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "description": "Side sheet / drawer (Radix dialog).",
+      "dependencies": [
+        "@radix-ui/react-dialog",
+        "class-variance-authority",
+        "lucide-react"
+      ],
+      "registryDependencies": [
+        "utils",
+        "windmill-tokens"
+      ]
+    },
+    {
+      "name": "sidebar",
+      "type": "registry:ui",
+      "title": "Sidebar",
+      "files": [
+        {
+          "path": "components/ui/sidebar.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "description": "Full sidebar system (provider, menu, groups, rail).",
+      "dependencies": [
+        "@radix-ui/react-tooltip",
+        "class-variance-authority",
+        "lucide-react"
+      ],
+      "registryDependencies": [
+        "button",
+        "divider",
+        "input",
+        "sheet",
+        "utils",
+        "windmill-tokens"
+      ]
+    },
+    {
+      "name": "slide-over",
+      "type": "registry:ui",
+      "title": "Slide Over",
+      "files": [
+        {
+          "path": "components/ui/slide-over.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "description": "Slide-over panel.",
+      "dependencies": [
+        "@headlessui/react",
+        "lucide-react"
+      ],
+      "registryDependencies": [
+        "button",
+        "flexible-spacer",
+        "scroll-area",
+        "stack",
+        "typography",
+        "utils",
+        "windmill-tokens"
+      ]
+    },
+    {
+      "name": "sort-control",
+      "type": "registry:ui",
+      "title": "Sort Control",
+      "files": [
+        {
+          "path": "components/ui/sort-control.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "description": "Sort field / direction control.",
+      "dependencies": [
+        "@radix-ui/react-icons",
+        "lucide-react"
+      ],
+      "registryDependencies": [
+        "popover",
+        "utils",
+        "windmill-tokens"
+      ]
+    },
+    {
+      "name": "sortable",
+      "type": "registry:ui",
+      "title": "Sortable",
+      "files": [
+        {
+          "path": "components/ui/sortable.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "description": "Drag-and-drop sortable list (dnd-kit).",
+      "dependencies": [
+        "@dnd-kit/core",
+        "@dnd-kit/modifiers",
+        "@dnd-kit/sortable",
+        "@dnd-kit/utilities",
+        "lucide-react",
+        "react-textarea-autosize"
+      ],
+      "registryDependencies": [
+        "button",
+        "stack",
+        "utils",
+        "windmill-tokens"
+      ]
+    },
+    {
+      "name": "spinner",
+      "type": "registry:ui",
+      "title": "Spinner",
+      "files": [
+        {
+          "path": "components/ui/spinner.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "description": "Loading spinner.",
+      "dependencies": [
+        "lucide-react"
+      ],
+      "registryDependencies": [
+        "utils",
+        "windmill-tokens"
+      ]
+    },
+    {
+      "name": "stack",
+      "type": "registry:ui",
+      "title": "Stack",
+      "files": [
+        {
+          "path": "components/ui/stack.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "description": "VStack / HStack flexbox layout primitives.",
+      "dependencies": [
+        "class-variance-authority"
+      ],
+      "registryDependencies": [
+        "utils",
+        "windmill-tokens"
+      ]
+    },
+    {
+      "name": "status-icon",
+      "type": "registry:ui",
+      "title": "Status Icon",
+      "files": [
+        {
+          "path": "components/ui/status-icon.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "description": "Status indicator icon.",
+      "dependencies": [
+        "lucide-react"
+      ],
+      "registryDependencies": [
+        "utils",
+        "windmill-tokens"
+      ]
+    },
+    {
+      "name": "table",
+      "type": "registry:ui",
+      "title": "Table",
+      "files": [
+        {
+          "path": "components/ui/table.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "description": "Data table with selection + row actions.",
+      "dependencies": [
+        "class-variance-authority",
+        "lucide-react"
+      ],
+      "registryDependencies": [
+        "checkbox",
+        "dropdown-menu",
+        "flexible-spacer",
+        "scroll-area",
+        "utils",
+        "windmill-tokens"
+      ]
+    },
+    {
+      "name": "tabs",
+      "type": "registry:ui",
+      "title": "Tabs",
+      "files": [
+        {
+          "path": "components/ui/tabs.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "description": "Tabbed navigation (Radix).",
+      "dependencies": [
+        "@radix-ui/react-tabs"
+      ],
+      "registryDependencies": [
+        "utils",
+        "windmill-tokens"
+      ]
+    },
+    {
+      "name": "text-area",
+      "type": "registry:ui",
+      "title": "Text Area",
+      "files": [
+        {
+          "path": "components/ui/text-area.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "description": "Multi-line text input.",
+      "registryDependencies": [
+        "component-label-wrapper",
+        "utils",
+        "windmill-tokens"
+      ]
+    },
+    {
+      "name": "thinking-animation",
+      "type": "registry:ui",
+      "title": "Thinking Animation",
+      "files": [
+        {
+          "path": "components/ui/thinking-animation.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "description": "AI thinking animations (grid + windmill).",
+      "dependencies": [
+        "framer-motion"
+      ],
+      "registryDependencies": [
+        "windmill-tokens"
+      ]
+    },
+    {
+      "name": "tiptap-editor",
+      "type": "registry:ui",
+      "title": "Tiptap Editor",
+      "files": [
+        {
+          "path": "components/ui/tiptap-editor.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "description": "Rich text editor (TipTap).",
+      "dependencies": [
+        "@tiptap/extension-highlight",
+        "@tiptap/extension-image",
+        "@tiptap/extension-link",
+        "@tiptap/extension-list",
+        "@tiptap/extension-subscript",
+        "@tiptap/extension-superscript",
+        "@tiptap/extension-table",
+        "@tiptap/extension-text-align",
+        "@tiptap/extension-typography",
+        "@tiptap/extensions",
+        "@tiptap/pm",
+        "@tiptap/react",
+        "@tiptap/starter-kit",
+        "lucide-react"
+      ],
+      "registryDependencies": [
+        "button",
+        "utils",
+        "windmill-tokens"
+      ]
+    },
+    {
+      "name": "toggle",
+      "type": "registry:ui",
+      "title": "Toggle",
+      "files": [
+        {
+          "path": "components/ui/toggle.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "description": "Switch / boolean toggle.",
+      "dependencies": [
+        "@radix-ui/react-switch",
+        "lucide-react"
+      ],
+      "registryDependencies": [
+        "utils",
+        "windmill-tokens"
+      ]
+    },
+    {
+      "name": "tooltip",
+      "type": "registry:ui",
+      "title": "Tooltip",
+      "files": [
+        {
+          "path": "components/ui/tooltip.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "description": "Tooltip (Radix).",
+      "dependencies": [
+        "@radix-ui/react-tooltip"
+      ],
+      "registryDependencies": [
+        "utils",
+        "windmill-tokens"
+      ]
+    },
+    {
+      "name": "typography",
+      "type": "registry:ui",
+      "title": "Typography",
+      "files": [
+        {
+          "path": "components/ui/typography.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "description": "Header, Paragraph, Label, MonoLabel, Identifier.",
+      "dependencies": [
+        "class-variance-authority"
+      ],
+      "registryDependencies": [
+        "copy-to-clipboard",
+        "utils",
+        "windmill-tokens"
+      ]
+    },
+    {
+      "name": "vertical-steps",
+      "type": "registry:ui",
+      "title": "Vertical Steps",
+      "files": [
+        {
+          "path": "components/ui/vertical-steps.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "description": "Vertical step indicator.",
+      "dependencies": [
+        "lucide-react"
+      ],
+      "registryDependencies": [
+        "windmill-tokens"
+      ]
+    },
+    {
+      "name": "wireframe",
+      "type": "registry:ui",
+      "title": "Wireframe",
+      "files": [
+        {
+          "path": "components/ui/wireframe.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "description": "Wireframe placeholder container.",
+      "registryDependencies": [
+        "typography",
+        "utils",
+        "windmill-tokens"
+      ]
+    }
+  ]
+}

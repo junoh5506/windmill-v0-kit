@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "gradient-background",
+  "title": "Gradient Background",
+  "description": "Animated gradient backdrop.",
+  "registryDependencies": [
+    "utils",
+    "windmill-tokens"
+  ],
+  "files": [
+    {
+      "path": "components/ui/gradient-background.tsx",
+      "content": "\"use client\";\n\n// Vendored from packages/ui/src/components/GradientBackground/GradientBackground.tsx. Verbatim animation; @wind/Remix deps stripped for v0.\n\nimport { cn } from \"@/lib/utils\";\n\ninterface Props {\n  className?: string;\n}\n\nconst GradientBackground = ({ className }: Props) => (\n  <div className={cn(\"overflow-hidden -z-10 pointer-events-none rounded-lg\", className)}>\n    <div className=\"absolute bottom-[-34%] left-[-20%] h-[40%] w-[60%] rounded-full bg-gradientBanner-accent1/30 blur-2xl\"></div>\n    <div className=\"absolute bottom-[-36%] right-[10%] h-[50%] w-[70%] rounded-full bg-gradientBanner-accent2/30 blur-2xl\"></div>\n    <div className=\"absolute bottom-[-30%] right-[-20%] h-[45%] w-[65%] rounded-full bg-gradientBanner-accent3/30 blur-2xl\"></div>\n  </div>\n);\n\nexport default GradientBackground;\n",
+      "type": "registry:ui"
+    }
+  ],
+  "type": "registry:ui"
+}

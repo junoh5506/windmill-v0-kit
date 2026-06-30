@@ -1,0 +1,17 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "checkbox",
+  "title": "Checkbox",
+  "description": "Checkbox control.",
+  "registryDependencies": [
+    "windmill-tokens"
+  ],
+  "files": [
+    {
+      "path": "components/ui/checkbox.tsx",
+      "content": "\"use client\";\n\n// Vendored from packages/ui/src/components/Checkbox/Checkbox.tsx. Styling verbatim; Remix/workspace deps stripped for v0.\n\nimport { forwardRef, type ComponentProps } from \"react\";\n\nexport type CheckboxProps = Omit<\n  ComponentProps<\"input\">,\n  \"type\" | \"value\" | \"onChange\" | \"defaultValue\" | \"checked\" | \"defaultChecked\"\n> & {\n  value?: boolean | null;\n  defaultValue?: boolean | null;\n  onChange?: (value: boolean) => void;\n  issue?: unknown;\n};\n\nexport const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(\n  ({ className, onChange, issue, value, defaultValue, ...rest }, ref) => {\n    return (\n      <input\n        {...rest}\n        ref={ref}\n        type=\"checkbox\"\n        checked={value ?? undefined}\n        defaultChecked={defaultValue ?? undefined}\n        onChange={(e) => onChange?.(e.target.checked)}\n        disabled={rest.disabled}\n        className={className}\n      />\n    );\n  }\n);\n\nCheckbox.displayName = \"Checkbox\";\n\nexport default Checkbox;\n",
+      "type": "registry:ui"
+    }
+  ],
+  "type": "registry:ui"
+}

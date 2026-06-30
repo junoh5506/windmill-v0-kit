@@ -1,0 +1,20 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "fade-up-with-delay",
+  "title": "Fade Up With Delay",
+  "description": "Staggered fade-up entrance.",
+  "dependencies": [
+    "framer-motion"
+  ],
+  "registryDependencies": [
+    "windmill-tokens"
+  ],
+  "files": [
+    {
+      "path": "components/ui/fade-up-with-delay.tsx",
+      "content": "\"use client\";\n\n// Vendored from packages/ui/src/components/FadeUpWithDelay/FadeUpWithDelay.tsx. Verbatim animation; @wind/Remix deps stripped for v0.\n\nimport { motion } from \"framer-motion\";\nimport { useState, type PropsWithChildren } from \"react\";\n\ninterface Props extends PropsWithChildren {\n  className?: string;\n  index?: number;\n  baseDelay?: number;\n  delayIncrement?: number;\n  isVisible?: boolean;\n}\n\nconst FadeUpWithDelay = ({\n  children,\n  className,\n  index = 0,\n  baseDelay = 0,\n  delayIncrement = 0.1,\n  isVisible = true,\n}: Props) => {\n  const [isVisibleOnLoad] = useState(isVisible);\n\n  return (\n    <motion.div\n      initial={{ opacity: 0, y: 20 }}\n      animate={{ opacity: isVisible ? 1 : 0, y: isVisible ? 0 : 20 }}\n      transition={{\n        duration: 0.3,\n        delay: isVisibleOnLoad ? baseDelay + index * delayIncrement : 0,\n      }}\n      className={className}\n    >\n      {children}\n    </motion.div>\n  );\n};\n\nexport default FadeUpWithDelay;\n",
+      "type": "registry:ui"
+    }
+  ],
+  "type": "registry:ui"
+}

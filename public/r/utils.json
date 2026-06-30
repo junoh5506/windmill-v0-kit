@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "utils",
+  "title": "cn() utility",
+  "description": "clsx + extended tailwind-merge, aware of Windmill's custom font sizes and token colors.",
+  "dependencies": [
+    "clsx",
+    "tailwind-merge"
+  ],
+  "files": [
+    {
+      "path": "lib/utils.ts",
+      "content": "import { type ClassValue, clsx } from \"clsx\";\nimport { extendTailwindMerge } from \"tailwind-merge\";\n\n/*\n * Mirror of packages/ui/src/util/cn.ts. The custom font sizes (text-ui,\n * text-body-*, text-header-*, caption) and token text colors are registered\n * with tailwind-merge so conflicting classes dedupe the same way they do in\n * the real app.\n */\nconst twMerge = extendTailwindMerge({\n  extend: {\n    classGroups: {\n      \"font-size\": [\n        { text: [\"header-lg\", \"header-md\", \"header-sm\", \"body-md\", \"body-sm\", \"caption\", \"ui\"] },\n      ],\n      \"text-color\": [\n        {\n          text: [\n            \"primary\",\n            \"secondary\",\n            \"tertiary\",\n            \"accent\",\n            \"accent-inverse\",\n            \"inverse\",\n            \"error\",\n            \"green\",\n            \"red\",\n            \"yellow\",\n            \"blue\",\n            \"purple\",\n            \"fuchsia\",\n            \"orange\",\n          ],\n        },\n      ],\n    },\n  },\n});\n\nexport function cn(...inputs: ClassValue[]) {\n  return twMerge(clsx(inputs));\n}\n\nexport default cn;\n",
+      "type": "registry:lib"
+    }
+  ],
+  "type": "registry:lib"
+}

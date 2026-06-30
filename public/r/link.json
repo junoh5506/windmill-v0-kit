@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "link",
+  "title": "Link",
+  "description": "Styled anchor link.",
+  "registryDependencies": [
+    "utils",
+    "windmill-tokens"
+  ],
+  "files": [
+    {
+      "path": "components/ui/link.tsx",
+      "content": "\"use client\";\n\n// Vendored from packages/ui/src/components/Link/Link.tsx. Styling verbatim; Remix/workspace deps stripped for v0.\n\nimport { cn } from \"@/lib/utils\";\nimport { forwardRef, type AnchorHTMLAttributes } from \"react\";\n\n// NOTE: Remix <Link to=...> replaced with a plain styled <a href=...>; the\n// UrlUtil safe-link check, PostLink, and prefetch behavior are dropped for v0.\ntype LinkProps = AnchorHTMLAttributes<HTMLAnchorElement> & {\n  to: string;\n};\n\nexport const Link = forwardRef<HTMLAnchorElement, LinkProps>(\n  ({ children, className, to, ...props }, ref) => {\n    return (\n      <a ref={ref} href={to} className={cn(className)} {...props}>\n        {children}\n      </a>\n    );\n  }\n);\n\nLink.displayName = \"Link\";\n\nexport default Link;\n",
+      "type": "registry:ui"
+    }
+  ],
+  "type": "registry:ui"
+}

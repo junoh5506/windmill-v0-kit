@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "input",
+  "title": "Input",
+  "description": "Text input.",
+  "registryDependencies": [
+    "utils",
+    "windmill-tokens"
+  ],
+  "files": [
+    {
+      "path": "components/ui/input.tsx",
+      "content": "\"use client\";\n\n// Vendored from packages/ui/src/components/Input/Input.tsx. Styling copied verbatim; Remix/workspace deps stripped for v0.\n\nimport { cn } from \"@/lib/utils\";\nimport { forwardRef, type InputHTMLAttributes } from \"react\";\n\ntype Props = InputHTMLAttributes<HTMLInputElement>;\n\nexport const Input = forwardRef<HTMLInputElement, Props>(\n  ({ className, type = \"text\", ...props }, ref) => {\n    return (\n      <input\n        {...props}\n        ref={ref}\n        type={type}\n        className={cn(\n          \"block w-full rounded-md placeholder:text-secondary/50 border-base sm:text-body-sm focus:outline-none focus:ring-accent focus:border-accent bg-surface focus:bg-surface placeholder-secondary\",\n          className\n        )}\n      />\n    );\n  }\n);\n\nInput.displayName = \"Input\";\n\nexport default Input;\n",
+      "type": "registry:ui"
+    }
+  ],
+  "type": "registry:ui"
+}

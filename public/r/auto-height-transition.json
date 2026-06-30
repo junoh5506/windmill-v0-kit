@@ -1,0 +1,17 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "auto-height-transition",
+  "title": "Auto Height Transition",
+  "description": "Animated height auto-transition.",
+  "registryDependencies": [
+    "windmill-tokens"
+  ],
+  "files": [
+    {
+      "path": "components/ui/auto-height-transition.tsx",
+      "content": "\"use client\";\n\n// Vendored from packages/ui/src/components/AutoHeightTransition/AutoHeightTransition.tsx. Verbatim animation; @wind/Remix deps stripped for v0.\n\nimport { useEffect, useState, type PropsWithChildren } from \"react\";\n\ninterface AutoHeightTransitionProps {\n  delay?: number;\n  defaultHeight?: number | \"auto\";\n}\n\n// TODO (jchaiken1) if performance becomes an issue with many of these - share the observer instance\nconst AutoHeightTransition = ({\n  children,\n  delay = 0.5,\n  defaultHeight = \"auto\",\n}: PropsWithChildren<AutoHeightTransitionProps>) => {\n  const [element, setElement] = useState<HTMLDivElement | null>(null);\n  const [height, setHeight] = useState<\"auto\" | number>(defaultHeight);\n\n  const cssHeight = height === \"auto\" ? height : `${height}px`;\n\n  useEffect(() => {\n    if (!element || typeof ResizeObserver === \"undefined\") {\n      return;\n    }\n    const observer = new ResizeObserver((entries) => {\n      setHeight(entries[0].contentRect.height);\n    });\n\n    observer.observe(element);\n\n    return () => {\n      if (observer) {\n        observer.disconnect();\n      }\n    };\n  }, [element]);\n\n  const isServer = typeof document === \"undefined\";\n\n  return (\n    <div\n      className=\"outer relative z-[1] overflow-hidden transition-[height]\"\n      style={{ height: cssHeight, transitionDuration: `${delay}s` }}\n    >\n      <div\n        ref={(ref) => {\n          setElement(ref);\n        }}\n        className=\"inner left-0 top-0 w-full\"\n        style={{\n          position: typeof ResizeObserver === \"undefined\" && !isServer ? \"initial\" : \"absolute\",\n        }}\n      >\n        {children}\n      </div>\n    </div>\n  );\n};\n\nexport default AutoHeightTransition;\n",
+      "type": "registry:ui"
+    }
+  ],
+  "type": "registry:ui"
+}

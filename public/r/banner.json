@@ -1,0 +1,23 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "banner",
+  "title": "Banner",
+  "description": "Full-width banner.",
+  "dependencies": [
+    "class-variance-authority",
+    "lucide-react"
+  ],
+  "registryDependencies": [
+    "button",
+    "utils",
+    "windmill-tokens"
+  ],
+  "files": [
+    {
+      "path": "components/ui/banner.tsx",
+      "content": "\"use client\";\n\n// Vendored from packages/ui/src/components/Banner/Banner.tsx. Styling verbatim; Remix/workspace deps stripped for v0.\n\nimport { Button } from \"@/components/ui/button\";\nimport { cn } from \"@/lib/utils\";\nimport { cva, type VariantProps } from \"class-variance-authority\";\nimport { CheckIcon, CircleXIcon, InfoIcon, TriangleAlertIcon } from \"lucide-react\";\nimport type { ComponentProps, ReactNode } from \"react\";\n\n// NOTE: Typography Paragraph inlined (token classes preserved verbatim).\nconst Paragraph = ({ children, className }: { children: ReactNode; className?: string }) => (\n  <div className={cn(\"text-body-sm text-secondary font-normal\", className)}>{children}</div>\n);\n\ninterface Props extends VariantProps<typeof BannerStyles> {\n  className?: string;\n  description?: ReactNode;\n  cta?: ComponentProps<typeof Button>;\n  secondaryCta?: ComponentProps<typeof Button>;\n  tertiaryCta?: ComponentProps<typeof Button>;\n  icon?: ReactNode;\n}\n\nconst BannerStyles = cva([\"flex-col md:flex-row flex md:items-start gap-4 py-2 pl-4 pr-2\"], {\n  variants: {\n    intent: {\n      info: \"bg-surface-muted/50\",\n      success: \"bg-green\",\n      error: \"bg-red\",\n      warning: \"bg-yellow\",\n    },\n  },\n  defaultVariants: {\n    intent: \"info\",\n  },\n});\n\nconst BannerIconStyles = cva([\"flex-none\"], {\n  variants: {\n    intent: {\n      info: \"text-tertiary\",\n      success: \"text-green\",\n      error: \"text-red\",\n      warning: \"text-yellow\",\n    },\n    inline: {\n      true: \"circle-6 text-sm\",\n      false: \"circle-8\",\n      undefined: \"circle-8\",\n    },\n  },\n  defaultVariants: {\n    intent: \"info\",\n  },\n});\n\nconst BannerParagraphStyle = cva(\"text-primary\", {\n  variants: {\n    intent: {},\n    borderless: {},\n  },\n});\n\nconst Banner = ({\n  className,\n  description,\n  cta,\n  secondaryCta,\n  tertiaryCta,\n  icon,\n  ...cvaProps\n}: Props) => {\n  const { intent = \"info\" } = cvaProps;\n\n  const IconNode = (\n    <div className={BannerIconStyles(cvaProps)}>\n      {icon}\n      {!icon && (\n        <>\n          {intent === \"info\" && <InfoIcon />}\n          {intent === \"warning\" && <TriangleAlertIcon />}\n          {intent === \"error\" && <CircleXIcon />}\n          {intent === \"success\" && <CheckIcon />}\n        </>\n      )}\n    </div>\n  );\n\n  return (\n    <div className=\"@container/banner\">\n      <div className={cn(BannerStyles(cvaProps), className)}>\n        <div className=\"@lg/banner:flex @lg/banner:items-center @lg/banner:gap-2 w-full\">\n          <div className=\"@lg/banner:flex-row flex flex-col items-center gap-4\">\n            {IconNode}\n            {description && <Paragraph className={BannerParagraphStyle()}>{description}</Paragraph>}\n          </div>\n          <div className=\"@xl/banner:flex-row flex flex-none flex-col\">\n            {cta && <Button intent=\"transparent\" size=\"sm\" {...cta} />}\n            {secondaryCta && <Button intent=\"link\" size=\"sm\" {...secondaryCta} />}\n            {tertiaryCta && <Button intent=\"link\" size=\"sm\" {...tertiaryCta} />}\n          </div>\n        </div>\n      </div>\n    </div>\n  );\n};\n\nexport default Banner;\n",
+      "type": "registry:ui"
+    }
+  ],
+  "type": "registry:ui"
+}

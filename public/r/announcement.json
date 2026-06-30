@@ -1,0 +1,24 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "announcement",
+  "title": "Announcement",
+  "description": "Announcement card.",
+  "dependencies": [
+    "class-variance-authority",
+    "lucide-react"
+  ],
+  "registryDependencies": [
+    "button",
+    "stack",
+    "utils",
+    "windmill-tokens"
+  ],
+  "files": [
+    {
+      "path": "components/ui/announcement.tsx",
+      "content": "\"use client\";\n\n// Vendored from packages/ui/src/components/Announcement/AnnouncementCard.tsx. Styling verbatim; Remix/workspace deps stripped for v0.\n\nimport { Button } from \"@/components/ui/button\";\nimport { VStack } from \"@/components/ui/stack\";\nimport { cn } from \"@/lib/utils\";\nimport { cva, type VariantProps } from \"class-variance-authority\";\nimport { ArrowRightIcon, CircleXIcon, InfoIcon, XIcon } from \"lucide-react\";\nimport type { ComponentProps, ReactNode } from \"react\";\n\n// NOTE: Typography Label/Paragraph inlined (token classes preserved verbatim).\nconst Label = ({ children, className }: { children: ReactNode; className?: string }) => (\n  <div className={cn(\"text-primary text-body-sm font-medium\", className)}>{children}</div>\n);\n\nconst Paragraph = ({ children, className }: { children: ReactNode; className?: string }) => (\n  <div className={cn(\"text-body-sm text-secondary font-normal\", className)}>{children}</div>\n);\n\ninterface Props extends VariantProps<typeof AnnouncementCardStyles> {\n  className?: string;\n  icon?: ReactNode;\n  image?: ReactNode;\n  title: ReactNode;\n  description?: ReactNode;\n  cta?: ComponentProps<typeof Button>;\n  onDismiss?: () => void;\n}\n\nconst AnnouncementCardStyles = cva(\"relative overflow-hidden rounded-lg border\", {\n  variants: {\n    intent: {\n      promo: \"bg-surface border-border\",\n      info: \"bg-surface border-border\",\n      error: \"bg-surface border-red/30\",\n    },\n  },\n  defaultVariants: {\n    intent: \"info\",\n  },\n});\n\nconst AnnouncementCardIconStyles = cva(\"flex-none mt-[2px] circle-5\", {\n  variants: {\n    intent: {\n      info: \"text-tertiary\",\n      error: \"text-red\",\n    },\n  },\n  defaultVariants: {\n    intent: \"info\",\n  },\n});\n\nconst DismissButton = ({ onClick }: { onClick: () => void }) => (\n  <button\n    aria-label=\"Dismiss\"\n    className=\"absolute right-2 top-2 z-10 text-tertiary transition-colors hover:text-primary\"\n    onClick={onClick}\n    type=\"button\"\n  >\n    <XIcon className=\"circle-4\" />\n  </button>\n);\n\nconst AnnouncementCard = ({\n  className,\n  icon,\n  image,\n  title,\n  description,\n  cta,\n  onDismiss,\n  ...cvaProps\n}: Props) => {\n  const { intent = \"info\" } = cvaProps;\n\n  if (intent === \"promo\") {\n    return (\n      <div className={cn(AnnouncementCardStyles(cvaProps), className)}>\n        <div className=\"aspect-[16/10] w-full bg-surface-muted\">{image}</div>\n        <VStack gapXs className=\"p-3\">\n          <Label>{title}</Label>\n          {description && <Paragraph>{description}</Paragraph>}\n          {cta && (\n            <Button\n              className=\"-ml-2 mt-1 self-start font-normal hover:text-primary hover:underline hover:underline-offset-4\"\n              icon={<ArrowRightIcon className=\"circle-4\" />}\n              iconRight\n              intent=\"link\"\n              size=\"sm\"\n              {...cta}\n            />\n          )}\n        </VStack>\n        {onDismiss && <DismissButton onClick={onDismiss} />}\n      </div>\n    );\n  }\n\n  const IconNode = (\n    <div className={AnnouncementCardIconStyles({ intent })}>\n      {icon}\n      {!icon && (\n        <>\n          {intent === \"info\" && <InfoIcon />}\n          {intent === \"error\" && <CircleXIcon />}\n        </>\n      )}\n    </div>\n  );\n\n  return (\n    <VStack gapSm className={cn(AnnouncementCardStyles(cvaProps), \"p-3\", className)}>\n      {IconNode}\n      <VStack gapXs className=\"min-w-0\">\n        <Label>{title}</Label>\n        {description && <Paragraph>{description}</Paragraph>}\n        {cta && (\n          <Button\n            className=\"-ml-2 mt-1 self-start font-normal hover:text-primary hover:underline hover:underline-offset-4\"\n            icon={<ArrowRightIcon className=\"circle-4\" />}\n            iconRight\n            intent=\"link\"\n            size=\"sm\"\n            {...cta}\n          />\n        )}\n      </VStack>\n      {onDismiss && <DismissButton onClick={onDismiss} />}\n    </VStack>\n  );\n};\n\nexport default AnnouncementCard;\n",
+      "type": "registry:ui"
+    }
+  ],
+  "type": "registry:ui"
+}

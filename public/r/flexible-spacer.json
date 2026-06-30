@@ -1,0 +1,18 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "flexible-spacer",
+  "title": "Flexible Spacer",
+  "description": "Flex spacer.",
+  "registryDependencies": [
+    "utils",
+    "windmill-tokens"
+  ],
+  "files": [
+    {
+      "path": "components/ui/flexible-spacer.tsx",
+      "content": "\"use client\";\n\n// Vendored from packages/ui/src/components/FlexibleSpacer/FlexibleSpacer.tsx. Styling verbatim; Remix/workspace deps stripped for v0.\n\nimport { cn } from \"@/lib/utils\";\n\ninterface Props {\n  className?: string;\n}\n\nconst FlexibleSpacer = ({ className }: Props) => {\n  return <div className={cn(className, \"flex-grow\")}></div>;\n};\n\nexport default FlexibleSpacer;\n",
+      "type": "registry:ui"
+    }
+  ],
+  "type": "registry:ui"
+}

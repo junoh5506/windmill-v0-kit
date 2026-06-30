@@ -1,0 +1,167 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/*
+ * Windmill design tokens — resolved from WINDMILL_LIGHT_THEME_V3 (the real
+ * production light theme) through generateThemeStyleObject(). Values are
+ * stored as "r g b" triples so Tailwind can apply <alpha-value> opacities,
+ * e.g. bg-accent/5. DO NOT hand-edit individual channels — regenerate from
+ * the seed in apps/windmill-web/app/themes/themes.tsx if the theme changes.
+ */
+:root {
+  /* base */
+  --highlight: 59 130 246;
+  --selected: 241 241 241;
+
+  /* backgrounds */
+  --bg-base: 255 255 255;
+  --bg-surface: 253 253 253;
+  --bg-surface-muted: 241 241 241;
+  --bg-accent: 26 26 26;
+  --bg-accent-muted: 141 141 141;
+  --bg-primary-hover: 72 72 72;
+  --bg-secondary-hover: 232 232 232;
+  --bg-border: 229 229 229;
+  --bg-error: 254 226 226;
+  --bg-error-accent: 153 27 27;
+  --bg-accent-inverse: 255 255 255;
+
+  /* text */
+  --text-primary: 34 34 34;
+  --text-secondary: 91 91 93;
+  --text-tertiary: 146 146 146;
+  --text-accent: 26 26 26;
+  --text-inverse: 238 237 234;
+  --text-accent-inverse: 255 255 255;
+  --text-error: 69 10 10;
+  --text-error-accent-inverse: 254 226 226;
+
+  /* borders */
+  --border-default: 229 229 229;
+  --border-strong: 202 202 202;
+  --border-accent: 26 26 26;
+  --border-muted: 241 241 241;
+  --border-error: 252 165 165;
+  --border-accent-inverse: 255 255 255;
+
+  /* status — background + foreground pairs */
+  --green-background: 209 245 227;
+  --green-foreground: 76 183 130;
+  --red-background: 251 232 228;
+  --red-foreground: 229 63 79;
+  --yellow-background: 255 255 234;
+  --yellow-foreground: 233 146 67;
+  --blue-background: 230 242 255;
+  --blue-foreground: 72 133 255;
+  --purple-background: 242 240 255;
+  --purple-foreground: 176 128 243;
+  --fuchsia-background: 248 230 247;
+  --fuchsia-foreground: 255 69 149;
+  --orange-background: 255 230 210;
+  --orange-foreground: 255 107 36;
+
+  /* sidebar */
+  --sidebar-background: 250 250 250;
+  --sidebar-foreground: 82 82 82;
+  --sidebar-muted: 134 134 134;
+  --sidebar-primary: 243 241 241;
+  --sidebar-primary-foreground: 34 34 34;
+  --sidebar-accent: 235 235 236;
+  --sidebar-accent-foreground: 34 34 34;
+  --sidebar-border: 239 239 239;
+  --sidebar-ring: 59 130 246;
+
+  /* gradient banner */
+  --gradient-banner-background: 250 250 250;
+  --gradient-banner-accent1: 230 69 255;
+  --gradient-banner-accent2: 255 160 28;
+  --gradient-banner-accent3: 97 133 240;
+
+  /* radius — derived from theme.radius = 0.3 */
+  --radius-none: 0rem;
+  --radius-sm: 0.15rem;
+  --radius-DEFAULT: 0.3rem;
+  --radius-md: 0.45rem;
+  --radius-lg: 0.6rem;
+  --radius-xl: 1.2rem;
+  --radius-full: 9999rem;
+
+  /* border width */
+  --border-width-DEFAULT: 1px;
+
+  /* typography — DEFAULT_TYPOGRAPHY */
+  --font-header-lg-size: 1.5rem;
+  --font-header-lg-line-height: 1.25;
+  --font-header-lg-letter-spacing: -0.0417em;
+  --font-header-lg-weight: 500;
+  --font-header-md-size: 1.125rem;
+  --font-header-md-line-height: 1.25;
+  --font-header-md-letter-spacing: -0.0278em;
+  --font-header-md-weight: 500;
+  --font-header-sm-size: 1rem;
+  --font-header-sm-line-height: 1.25;
+  --font-header-sm-letter-spacing: -0.03125em;
+  --font-header-sm-weight: 500;
+  --font-body-md-size: 1rem;
+  --font-body-md-line-height: 1.5rem;
+  --font-body-md-letter-spacing: 0;
+  --font-body-md-weight: 400;
+  --font-body-sm-size: 0.875rem;
+  --font-body-sm-line-height: 1.25rem;
+  --font-body-sm-letter-spacing: 0;
+  --font-body-sm-weight: 450;
+  --font-caption-size: 0.75rem;
+  --font-caption-line-height: 1rem;
+  --font-caption-letter-spacing: 0.03em;
+  --font-caption-weight: 500;
+  --font-ui-size: 0.8125rem;
+  --font-ui-line-height: 1.25rem;
+  --font-ui-letter-spacing: 0;
+  --font-ui-weight: 500;
+}
+
+@layer base {
+  body {
+    background-color: rgb(var(--bg-base));
+    color: rgb(var(--text-primary));
+    font-family: "Inter", ui-sans-serif, system-ui, sans-serif;
+    -webkit-font-smoothing: antialiased;
+  }
+}
+
+/* Custom component utilities ported from packages/ui/src/input.css —
+   used by Button (icon intent), StatusIcon, Chip, Card, etc. */
+@layer components {
+  .circle-1 { @apply flex h-1 w-1 items-center justify-center rounded-full; }
+  .circle-2 { @apply flex size-2 items-center justify-center rounded-full; }
+  .circle-3 { @apply flex size-3 items-center justify-center rounded-full; }
+  .circle-4 { @apply flex size-4 items-center justify-center rounded-full; }
+  .circle-5 { @apply flex size-5 items-center justify-center rounded-full; }
+  .circle-6 { @apply flex size-6 items-center justify-center rounded-full; }
+  .circle-8 { @apply flex size-8 items-center justify-center rounded-full; }
+  .circle-10 { @apply flex size-10 items-center justify-center rounded-full; }
+  .circle-12 { @apply flex size-12 items-center justify-center rounded-full; }
+  .circle-14 { @apply flex size-14 items-center justify-center rounded-full; }
+  .card { @apply border bg-surface rounded-md block; }
+}
+
+/* Marquee keyframes + utilities ported verbatim from packages/ui/tailwind.config.cjs
+   (theme.extend.keyframes/animation). Used by Marquee.tsx, which drives speed/gap
+   via the --duration / --gap CSS vars set on its own classNames. */
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to { transform: translateX(calc(-100% - var(--gap))); }
+}
+@keyframes marquee-vertical {
+  from { transform: translateY(0); }
+  to { transform: translateY(calc(-100% - var(--gap))); }
+}
+@layer utilities {
+  .animate-marquee {
+    animation: marquee var(--duration) linear infinite;
+  }
+  .animate-marquee-vertical {
+    animation: marquee-vertical var(--duration) linear infinite;
+  }
+}

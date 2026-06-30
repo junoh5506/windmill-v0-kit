@@ -1,0 +1,21 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "panel",
+  "title": "Panel",
+  "description": "Resizable panel group.",
+  "dependencies": [
+    "react-resizable-panels"
+  ],
+  "registryDependencies": [
+    "stack",
+    "windmill-tokens"
+  ],
+  "files": [
+    {
+      "path": "components/ui/panel.tsx",
+      "content": "\"use client\";\n\n// Vendored from packages/ui/src/components/Panel/Panel.tsx. Styling verbatim; Remix/workspace deps stripped for v0.\n\nimport { HStack } from \"@/components/ui/stack\";\nimport type { ComponentProps, FC, ReactNode } from \"react\";\nimport {\n  Panel as RRPanel,\n  PanelGroup as RRPanelGroup,\n  PanelResizeHandle as RRPanelResizeHandle,\n  type PanelGroupProps,\n} from \"react-resizable-panels\";\n\n// NOTE: FlexibleSpacer dropped — replaced with a flex-1 spacer div.\n// NOTE: ScrollArea dropped — replaced with a native overflow-y-auto container.\n\ninterface Props {\n  title?: string;\n  icon?: ReactNode;\n  children: ReactNode;\n  accessories?: ReactNode;\n  scroll?: \"none\" | \"y\";\n  onClick?: () => void;\n}\n\nexport const Panel = ({\n  title,\n  icon,\n  children,\n  accessories,\n  scroll = \"none\",\n  onClick,\n  ...props\n}: Props & ComponentProps<typeof RRPanel>) => {\n  return (\n    <RRPanel {...props} className=\"relative\">\n      <style\n        dangerouslySetInnerHTML={{\n          __html: `.w-md-editor-toolbar { padding-right: 2rem; }`,\n        }}\n      />\n      <div className=\"absolute inset-0 flex flex-col overflow-hidden\" onClick={onClick}>\n        {title && (\n          <HStack className=\"h-8 flex-none border-b bg-surface/50 px-2\" gapSm>\n            {icon && <div className=\"opacity/50\">{icon}</div>}\n            {title && <p className=\"text-muted text-sm\">{title}</p>}\n            <div className=\"flex-1\" />\n            <HStack>{accessories}</HStack>\n          </HStack>\n        )}\n\n        <div className=\"flex-grow overflow-hidden\">\n          {scroll === \"y\" && <div className=\"h-full overflow-y-auto\">{children}</div>}\n          {scroll === \"none\" && children}\n        </div>\n      </div>\n    </RRPanel>\n  );\n};\n\nexport const PanelGroup: FC<PanelGroupProps> = RRPanelGroup;\n\nexport const PanelResizeHandle = () => {\n  return (\n    <RRPanelResizeHandle className=\"bg-border relative shrink-0 grow-0 basis-[1px] rounded-md transition hover:basis-1 hover:bg-accent\"></RRPanelResizeHandle>\n  );\n};\n",
+      "type": "registry:ui"
+    }
+  ],
+  "type": "registry:ui"
+}
